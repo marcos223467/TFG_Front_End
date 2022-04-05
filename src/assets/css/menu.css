@@ -1,0 +1,88 @@
+.card
+{
+    background: #f5f5f5;  /* fallback for old browsers */
+    width: 20rem;
+    height: 10rem;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 14px, rgba(0, 0, 0, 0.22) 0px 10px 12px;
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+
+.card-adm
+{
+    background: #f5f5f5;  /* fallback for old browsers */
+    width: 20rem;
+    height: 12rem;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 14px, rgba(0, 0, 0, 0.22) 0px 10px 12px;
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+
+#tabla-adm
+{
+    margin-bottom: 10%;
+}
+
+i{
+    margin-top: 25px;
+}
+
+h2
+{
+    color: #e4006a;
+}
+
+.btn-menu
+{
+    display: block;
+    margin: 0 auto;
+    background: none;
+    border: 0;
+}
+#salir
+{
+    width: 8rem;
+    height: 4rem;
+    color: #e4006a;
+}
+
+.btn-remove
+{
+    background: none;
+    border: 0;
+    float: right;
+}
+
+#container{
+    margin-bottom: 80px;
+}
+#container-alumno{
+    margin-bottom: 40px;
+}
+
+#logout
+{
+    display: block;
+    margin: 0 auto;
+    font-size: 20px;
+    color: black;
+}
+
+#logout-2
+{
+    margin-top: -30%;
+}
+
+#i
+{
+    font-size: 45px;
+}
+
+#info
+{
+    display: block;
+    margin: 0 auto;
+    margin-top: 10%;
+}

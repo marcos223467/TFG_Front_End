@@ -1,0 +1,17 @@
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #e6006b;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+#copy {
+    color: #e6006b;
+}
+
+
+
+  

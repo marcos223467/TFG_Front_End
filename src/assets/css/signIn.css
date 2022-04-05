@@ -1,0 +1,37 @@
+input
+{
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 5%;
+    width: 80% !important;
+}
+
+#psw
+{
+    color: rgb(255, 255, 255) !important;
+}
+
+#acceso{
+    font-weight: bold !important;
+}
+
+#correo
+{   
+    color: rgb(255, 255, 255) !important;
+    margin-top: 8%!important;
+}
+
+#btn
+{
+    display: inline-block;
+    margin-top: 10%;
+    width: 80% !important;
+    background-color: #000 !important;
+    border-color: #000 !important;
+}
+
+.logo
+{
+    display: block;
+    margin: 0 auto;
+}

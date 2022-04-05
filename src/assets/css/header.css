@@ -1,0 +1,46 @@
+header
+{
+    background-color: #e4006a;
+    width: 100% !important;
+}
+
+.a
+{
+    font-size: 20px;
+    color: white !important;
+}
+
+.a:hover
+{
+    font-weight: bold;
+}
+
+ul
+{
+    margin: 5px;
+}
+
+.dropdown-item
+{
+    font-size: 12px;
+    color: black !important;
+}
+
+.text-link{
+    font-size: 16px;
+}
+
+#nav-menu{
+    margin-top: 15px;
+}
+
+#restrict
+{
+    color: black;
+}
+
+#inicio
+{
+    background:none;
+    border: 0;
+}

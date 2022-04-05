@@ -1,0 +1,75 @@
+h3
+{
+    color: #e4006a;
+    display:block;
+    margin: 0 auto;
+    height: 70px;
+}
+
+#txt
+{
+    text-align: left;
+    color: #e4006a;
+    font-size: 18px;
+}
+
+#alumno
+{
+    display:block;
+    margin: 0 auto;
+    margin-top: 10%;
+    height: 18rem;
+    padding: 2%;
+    margin-bottom: 5%;
+}
+
+label
+{
+    font-size: 18px;
+    font-weight: none;
+    color: white !important;
+    text-align: center !important;
+    margin-left: 35%;
+}
+
+#asis
+{
+    display:block;
+    margin: 0 auto;
+}
+
+.btn .btn-secondary button
+{
+    text-align: center;
+    width: 10em;
+}
+
+.btn-asis
+{
+    width: 10rem;
+    height: 3rem;
+    margin-right: 10% !important;
+}
+
+.edit
+{
+    position: relative;
+}
+
+.spinner
+{
+    display: none;
+}
+
+#asist
+{
+    display:block;
+    width: 18rem;
+    margin-top: 15%;
+    margin-left: 5%;
+}
+
+.display-block
+{
+    display: block;
+}

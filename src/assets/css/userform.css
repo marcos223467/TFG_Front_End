@@ -1,0 +1,66 @@
+form
+{
+    background: #fffbd5;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #e4006a, #fffbd5);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #e4006a, #fffbd5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+    display: block !important;
+    margin: 0 auto;
+    width: 30rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0,0.19);
+    padding: 2%;
+    margin-bottom: 8%;
+}
+
+label
+{
+    float: left;
+    color: white;
+    font-weight: bold;
+}
+
+select
+{
+    display: block !important;
+    margin: 0 auto !important;
+    width: 40% !important;
+}
+
+legend
+{
+    font-weight: bold;
+}
+
+#btn
+{
+    display: inline-block;
+    margin-top: 10%;
+    width: 60% !important;
+    background-color: #000 !important;
+    border-color: #000 !important;
+}
+
+#volver
+{
+    position: relative;
+    display:block;
+    margin: 0 auto;
+    background-color: #e4006a;
+    width: auto;
+    border-radius: 30px;
+    margin-bottom: 1%;
+}
+
+@media (max-width: 700px) {
+    form
+    {
+        width: auto;
+        
+    }
+
+    #logoSignIn
+    {
+        display:none;
+    }
+}

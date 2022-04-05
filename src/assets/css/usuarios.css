@@ -1,0 +1,27 @@
+#cerrar
+{
+    background: none;
+    border: 0;
+    font-size: 35px;
+    margin: 0 !important;
+    padding-bottom: 5%;
+}
+
+#titulo
+{
+    margin: 0 auto;
+}
+
+#eliminar
+{
+    background-color: #DF3612;
+    color: white;
+    font-weight: bold;
+}
+
+#adm-i
+{
+    color: black;  
+    font-size: 18px;
+    margin-top: 0 !important;
+}

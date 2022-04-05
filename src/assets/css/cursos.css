@@ -1,0 +1,73 @@
+h3
+{
+    color: white;
+    display:block;
+    margin: 0 auto;
+}
+
+#txt
+{
+    text-align: left;
+    color: white;
+    font-size: 18px;
+}
+
+#curso
+{
+    display:block;
+    margin: 0 auto;
+    height: 20rem;
+    padding: 2%;
+    margin-bottom: 7%;
+}
+
+#cursos
+{
+    margin-bottom: 8%!important;
+}
+
+#add
+{
+    padding: 5%;
+    width: 15rem; 
+    height: 5rem;
+    color: #e4006a;
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+#add-i
+{
+    float: left;
+    font-size: 20px;
+    margin-top: 1% !important;
+}
+
+#edit
+{
+    float: right;
+    margin-bottom: 5%;
+    margin-right: 5%;
+}
+
+#rmv
+{
+    float: right;
+    margin-bottom: 5%;
+}
+
+#exportar
+{
+    margin-bottom: 15%;
+}
+
+#cerrarCurso
+{
+    border-color: #5c636a;
+}
+
+#btn-asis
+{
+    height: 40px;
+    font-size: 14px;
+}
