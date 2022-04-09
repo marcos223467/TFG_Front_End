@@ -1,11 +1,3 @@
-input
-{
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 5%;
-    width: 80% !important;
-}
-
 #psw
 {
     color: rgb(255, 255, 255) !important;
@@ -34,4 +26,15 @@ input
 {
     display: block;
     margin: 0 auto;
+}
+
+#card-form 
+{
+    height: 20rem;
+    margin-top: 10%;
+}
+
+#card-header-form
+{
+    padding:0;
 }

@@ -7,7 +7,7 @@ const Footer = () =>{
 
         <footer className="justify-content-between align-items-center py-3 border-top">
             <div className="align-items-center">
-                <span className="">© 2022 ABAST ANIMACIÓ</span>
+                <span className="">Presente!© 2022</span>
             </div>
 
         

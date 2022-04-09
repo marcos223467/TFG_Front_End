@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
-import logo from "../assets/img/abast.png";
 import '../assets/css/signIn.css';
 import Global from '../Global';
 import axios from "axios";
+import logo from "../assets/img/logo2.png";
 
 const SignIn = () =>{
 
@@ -57,30 +57,34 @@ const SignIn = () =>{
 
     return(
             
-        <main className="form-signin container" id="form-signin">
-            <div className="row">
-                <div className="col">
-                    <form onSubmit={receiveData}>
-                    <div className="container d-flex mb-2">
-                        <img className="mb-1 logo" id="logoSignIn" src={logo} alt="" width="200"/>
+
+        <div className="card col-md-4 mx-auto" id="card-form">
+            <div className="card-header" id="card-header-form">
+                <img className="mb-1 logo" id="logoSignIn" src={logo} alt="" width="30"/>
+                <h3>Login</h3>
+            </div>
+
+		    <div className="card-body">
+
+                <form onSubmit={receiveData}>
+
+                    <div className="mb-3">
+                        <input className="form-control" type="email" placeholder="Introduce tu email" required ref={email} onChange={changeState}/>
                     </div>
 
-                    <h4 className="mb-4" id="acceso">ACCESO</h4>
-                    
-                        <small className="" id="correo">Correo electrónico</small>
-                        <input type="email" className="form-control mt-2" id="floatingInput" placeholder="Email" ref={email} onChange={changeState} />
-                        
-                    
-                        <small id="psw">Contraseña</small>
-                        <input type="password" className="form-control mt-2" id="floatingPassword" placeholder="Contraseña" ref={password} onChange={changeState}/>
-                        
-                
+                    <div className="mb-3">
+                        <input className="form-control" type="password" name="password" placeholder="Introduce tu contraseña" required ref={password} onChange={changeState}/>
+                    </div>
 
-                    <button className="w-50 btn btn-lg btn-primary" type="submit" id="btn">Acceder</button>
-                    </form>
-                </div>
-            </div>
-        </main>
+                    <div className="form-group d-grid gap-2">
+                        <input className="form-control btn btn-primary" type="submit" value="Acceder"/>
+                    </div>
+                    
+                </form>
+
+		    </div>
+
+	    </div>
     )
 }
 
