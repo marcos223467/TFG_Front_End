@@ -1,6 +1,6 @@
 import React from "react";
 import '../assets/css/header.css';
-import logo from "../assets/img/abast.png";
+import logo from "../assets/img/Logo.png";
 
 const Header = () => { 
 
@@ -20,7 +20,7 @@ const Header = () => {
         <div>
             <header className="d-flex flex-wrap justify-content-center py-1 mb-4 border-bottom">
                 <button id="inicio" onClick={Inicio} className="d-flex align-items-center mb-3 mb-md-0 me-md-auto mx-auto">
-                    <img src={logo} width="200" alt="Logo"/>
+                    <img src={logo} width="150" alt="Logo"/>
                 </button>
             </header>
         </div>

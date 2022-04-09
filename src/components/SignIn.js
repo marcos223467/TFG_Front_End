@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import '../assets/css/signIn.css';
 import Global from '../Global';
 import axios from "axios";
-import logo from "../assets/img/logo2.png";
+import logo from "../assets/img/Logo.png";
 
 const SignIn = () =>{
 
@@ -60,8 +60,8 @@ const SignIn = () =>{
 
         <div className="card col-md-4 mx-auto" id="card-form">
             <div className="card-header" id="card-header-form">
-                <img className="mb-1 logo" id="logoSignIn" src={logo} alt="" width="30"/>
-                <h3>Login</h3>
+                <img className="mb-1 logo" id="logoSignIn" src={logo} alt="" width="100"/>
+                <h4>Login</h4>
             </div>
 
 		    <div className="card-body">
