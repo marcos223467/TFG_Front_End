@@ -1,5 +1,5 @@
 var Global = {
-	url: "https://app-abast-backend.herokuapp.com/api/"
+	url: "http://localhost:3900/api/"
 }
 
 export default Global;

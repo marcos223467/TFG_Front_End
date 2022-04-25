@@ -2,8 +2,6 @@ import React, {useState, useEffect} from "react";
 import '../assets/css/alumno.css';
 import Global from '../Global';
 import axios from "axios";
-import editar from "../assets/img/editar.png";
-import eliminar from "../assets/img/eliminar.png";
 import {Spinner} from 'reactstrap';
 
 const Alumno = ({id,alumnoData, actualizar}) =>

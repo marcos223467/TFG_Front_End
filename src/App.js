@@ -1,4 +1,3 @@
-import logo from './assets/img/logo.svg';
 import './assets/css/App.css';
 import Routers from './Routers';
 
