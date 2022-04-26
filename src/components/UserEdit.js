@@ -61,50 +61,43 @@ const UserEdit = () =>
         window.location.href ='/usuarios';
     }
 
-    function Volver(event)
-    {
-        event.preventDefault();
-        window.location.href ='/usuarios';
-    }
-
     return(
         <div className="bd-example">
-            <div>
-                <button id="volver" type="button" className="btn btn-dark" onClick={Volver}>Volver</button>
-            </div>
-            <form onSubmit={editUser}>
-                <fieldset disabled="">
-                    <legend className="mb-4">Editar Usuario</legend>
+            <div className="card-form">
+                <form onSubmit={editUser}>
+                    <div>
+                        <legend className="card-header mb-3"><a href="/usuarios"><i className="fa-solid fa-arrow-left-long"></i></a> Editar Usuario</legend>
+                    </div>
                     <div className="mb-3">
-                        <small className="">Email</small>
-                        <input type="email" id="email" className="form-control" 
+                        <label className="form-label">Email</label>
+                        <input type="email" id="email" className="form-control input-form" 
                             ref={email} placeholder="email@example.com" onChange={changeState}/>
                     </div>
                     <div className="mb-3">
-                        <small className="">Contraseña</small>
-                        <input type="text" id="pssw" className="form-control" 
+                        <label className="form-label">Contraseña</label>
+                        <input type="text" id="pssw" className="form-control input-form" 
                             ref={password} onChange={changeState}/>
                     </div>
                     <div className="mb-3">
-                        <small className="">Nombre</small>
-                        <input type="text" id="nombre" className="form-control" 
+                        <label className="form-label">Nombre</label>
+                        <input type="text" id="nombre" className="form-control input-form" 
                             ref={nombre} onChange={changeState}/>
                     </div>
                     <div className="mb-3">
-                        <small className="">Apellidos</small>
-                        <input type="text" id="apellidos" className="form-control" 
+                        <label className="form-label">Apellidos</label>
+                        <input type="text" id="apellidos" className="form-control input-form" 
                             ref={apellidos} onChange={changeState}/>
                     </div>
                     <div className="mb-3">
                         <select id="tipo" className="form-select" ref={tipo} onChange={changeState}>
-                            <option disable selected>Selecciona un rol</option>
+                            <option disabled selected>Selecciona un rol</option>
                             <option value="admin">Administrador</option>
                             <option value="profesor">Profesor</option>
                         </select>
                     </div>      
-                    <button type="submit" className="btn btn-primary" id="btn">Editar</button>
-                </fieldset>
-            </form>            
+                    <button type="submit" className="btn btn-form">Editar</button>
+                </form>
+            </div>
         </div>
     )
 }

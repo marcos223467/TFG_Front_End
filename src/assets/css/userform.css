@@ -13,18 +13,25 @@
     margin-bottom: 8%;
 }
 
-label
+.form-label
 {
-    float: left;
-    color: white;
-    font-weight: bold;
+    display:block;
+    margin: 0 auto;
+    color: black;
+}
+
+a
+{
+    color: black;
+    text-decoration: none;
 }
 
 select
 {
     display: block !important;
     margin: 0 auto !important;
-    width: 40% !important;
+    width: 15rem !important;
+    text-align: center;
 }
 
 legend
@@ -32,13 +39,19 @@ legend
     font-weight: bold;
 }
 
-#btn
+.btn-form
 {
+    color: #fff;
     display: inline-block;
-    margin-top: 10%;
     width: 60% !important;
     background-color: #000 !important;
     border-color: #000 !important;
+}
+
+.input-form
+{
+    margin: 0 auto;
+    width: 15rem;
 }
 
 #volver
@@ -50,6 +63,17 @@ legend
     width: auto;
     border-radius: 30px;
     margin-bottom: 1%;
+}
+
+.card-form
+{
+    display:block;
+    margin: 0 auto;
+    height: 32rem;
+    background: #f5f5f5;
+    width: 20rem;
+    border-radius: 15px;
+    box-shadow: rgb(0 0 0 / 30%) 0px 10px 14px, rgb(0 0 0 / 22%) 0px 10px 12px;
 }
 
 @media (max-width: 700px) {

@@ -49,7 +49,7 @@ const Menu = () =>
                     <button className="btn-menu" onClick={Salir}>
                         <div className="card" id="salir">
                             <div className="card-body">
-                                <i id="logout" className="fa-solid fa-arrow-right-from-bracket"></i>
+                                <i id="logout" className="fa-solid fa-arrow-right-from-bracket i-menu"></i>
                                 <br/>
                                 <h5 id="logout-2" className="card-title">Salir</h5>
                             </div>
@@ -63,7 +63,7 @@ const Menu = () =>
                                     <button className="btn-menu" onClick={UserForm}>
                                     <div className="card">
                                         <div className="card-body">
-                                            <i id="i" className="fa-solid fa-user-plus"></i>
+                                            <i id="i" className="fa-solid fa-user-plus i-menu"></i>
                                             <h2 className="card-title">Alta usuario</h2>
                                         </div>
                                     </div>
@@ -73,7 +73,7 @@ const Menu = () =>
                                 <button className="btn-menu" onClick={Administrar}>
                                     <div className="card">
                                         <div className="card-body">
-                                            <i id="i" className="fa-solid fa-gear"></i>
+                                            <i id="i" className="fa-solid fa-gear i-menu"></i>
                                             <h2 className="card-title">Administrar</h2>
                                         </div>
                                     </div>
@@ -83,7 +83,7 @@ const Menu = () =>
                                 <button className="btn-menu" onClick={AlumForm}>
                                     <div className="card">
                                         <div className="card-body">
-                                            <i id="i" className="fa-solid fa-graduation-cap"></i>
+                                            <i id="i" className="fa-solid fa-graduation-cap i-menu"></i>
                                             <h2 className="card-title">Alta alumno</h2>
                                         </div>
                                     </div>
@@ -93,7 +93,7 @@ const Menu = () =>
                                 <button className="btn-menu" onClick={Cursos}>
                                     <div className="card">
                                         <div className="card-body">
-                                            <i id="i" className="fa-solid fa-book"></i>
+                                            <i id="i" className="fa-solid fa-book i-menu"></i>
                                             <h2 className="card-title">Cursos</h2>
                                         </div>
                                     </div>

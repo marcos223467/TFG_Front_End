@@ -37,46 +37,39 @@ const UserForm = () =>
             });
         window.location.reload();
     }
-
-    function Volver(event)
-    {
-        event.preventDefault();
-        window.location.href ='/menu';
-    }
     return(
         <div className="bd-example">
-            <div>
-                <button id="volver" type="button" className="btn btn-dark" onClick={Volver}>Volver</button>
-            </div>
-            <form onSubmit={createUser}>
-                <fieldset disabled="">
-                    <legend className="mb-4">Alta Usuario</legend>
-                    <div className="mb-3">
-                        <small className="">Email</small>
-                        <input type="email" id="disabledTextInput" className="form-control" ref={email} placeholder="email@example.com" onChange={changeState} required/>
+            <div className="card-form">
+                <form onSubmit={createUser}>
+                    <div>
+                        <legend className="card-header mb-3"><a href="/menu"><i className="fa-solid fa-arrow-left-long"></i></a> Alta Usuario</legend>
                     </div>
                     <div className="mb-3">
-                        <small className="">Contraseña</small>
-                        <input type="password" id="disabledTextInput" className="form-control" ref={password} onChange={changeState} required/>
+                        <label className="form-label">Email</label>
+                        <input type="email" className="form-control input-form" ref={email} placeholder="email@example.com" onChange={changeState} required/>
                     </div>
                     <div className="mb-3">
-                        <small className="">Nombre</small>
-                        <input type="text" id="disabledTextInput" className="form-control" ref={nombre} onChange={changeState} required/>
+                        <label className="form-label">Contraseña</label>
+                        <input type="password" className="form-control input-form" ref={password} onChange={changeState} required/>
                     </div>
                     <div className="mb-3">
-                        <small className="">Apellidos</small>
-                        <input type="text" id="disabledTextInput" className="form-control" ref={apellidos} onChange={changeState} required/>
+                        <label className="form-label">Nombre</label>
+                        <input type="text" className="form-control input-form" ref={nombre} onChange={changeState} required/>
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Apellidos</label>
+                        <input type="text" className="form-control input-form" ref={apellidos} onChange={changeState} required/>
                     </div>
                     <div className="mb-3">
                         <select id="disabledSelect" className="form-select" ref={tipo} onChange={changeState} required>
-                            <option disable selected>Selecciona un rol</option>
+                            <option disabled selected>Selecciona un rol</option>
                             <option value="admin">Administrador</option>
                             <option value="profesor">Profesor</option>
                         </select>
                     </div>      
-                    <button type="submit" className="btn btn-primary" id="btn">Registrar</button>
-                </fieldset>
-            </form>
+                    <button type="submit" className="btn btn-form">Registrar</button>
+                </form>
+            </div>
         </div>
     )
 }

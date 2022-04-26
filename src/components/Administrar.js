@@ -23,9 +23,10 @@ const Administrar = () =>
     }
     return(
         <div className="container-fluid" id="container">
-            <div>
-                <button id="volver" type="button" className="btn btn-dark" onClick={Volver}>Volver</button>
-            </div>
+            <a href="/menu" className="back">
+                <i className="fa-solid fa-arrow-left-long"></i>
+                <p>Volver</p>
+            </a>
             <div className="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2">
 
                 <div className="col">
