@@ -30,9 +30,10 @@ const Cursos_Archivados = () =>
     {
         return(
             <div className="bd-example">
-                <div>
-                    <button id="volver" type="button" className="btn btn-secondary" onClick={Volver}>Volver</button>
-                </div>
+                <a href="/cursos" className="back">
+                    <i className="fa-solid fa-arrow-left-long"></i>
+                    <p>Volver</p>
+                </a>
                 
                 <div className="container" id="cursos">
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
@@ -57,9 +58,10 @@ const Cursos_Archivados = () =>
     {
         return(
             <div className="bd-example">
-                <div>
-                    <button id="volver" type="button" className="btn btn-secondary" onClick={Volver}>Volver</button>
-                </div>
+                <a href="/cursos" className="back">
+                    <i className="fa-solid fa-arrow-left-long"></i>
+                    <p>Volver</p>
+                </a>
                 <div className="container" id="cursos">
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
                         { cursos.map((curso,i) =>{

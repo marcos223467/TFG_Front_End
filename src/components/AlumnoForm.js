@@ -60,34 +60,28 @@ const AlumnoForm = () =>
             });
     }
 
-    function Volver(event)
-    {
-        event.preventDefault();
-        window.location.href ='/menu';
-    }
     return(
         <div className="bd-example">
-            <div>
-                <button id="volver" type="button" class="btn btn-dark" onClick={Volver}>Volver</button>
-            </div>
-            <form onSubmit={createAlumn}>
-                <fieldset disabled="">
-                    <legend className="mb-4">Alta Alumno</legend>
-                    <div className="mb-3">
-                        <small className="">Nombre</small>
-                        <input type="text" id="disabledTextInput" className="form-control" ref={nombre} onChange={changeState} required/>
+            <div className="card-form2">
+                <form onSubmit={createAlumn}>
+                    <div>
+                        <legend className="card-header mb-3"><a href="/menu"><i className="fa-solid fa-arrow-left-long"></i></a> Alta Alumno</legend>
                     </div>
                     <div className="mb-3">
-                        <small className="">Apellidos</small>
-                        <input type="text" id="disabledTextInput" className="form-control" ref={apellidos} onChange={changeState} required/>
+                        <label className="form-label">Nombre</label>
+                        <input type="text" className="form-control input-form" ref={nombre} onChange={changeState} required/>
                     </div>
                     <div className="mb-3">
-                        <small className="">Fecha de nacimiento</small>
-                        <input type="date" id="disabledTextInput" className="form-control" ref={fecha_nacimiento} onChange={changeState} required/>
+                        <label className="form-label">Apellidos</label>
+                        <input type="text" className="form-control input-form" ref={apellidos} onChange={changeState} required/>
                     </div>
                     <div className="mb-3">
-                        <select id="disabledSelect" className="form-select" ref={curso} onChange={changeState} required>
-                            <option disable selected>Selecciona un Curso</option>
+                        <label className="form-label">Fecha de nacimiento</label>
+                        <input type="date" className="form-control input-form" ref={fecha_nacimiento} onChange={changeState} required/>
+                    </div>
+                    <div className="mb-3">
+                        <select className="form-select" ref={curso} onChange={changeState} required>
+                            <option disabled selected>Selecciona un Curso</option>
                             {cursos.map((curs,i) =>{
                                 return(
                                     <option>{curs.nombre}</option>
@@ -95,10 +89,10 @@ const AlumnoForm = () =>
                             })}
                         </select>
                     </div>
-                   
-                    <button type="submit" className="btn btn-primary" id="btn">Registrar</button>
-                </fieldset>
-            </form>
+                
+                    <button type="submit" className="btn btn-form">Registrar</button>
+                </form>
+            </div>
         </div>
     )
 }

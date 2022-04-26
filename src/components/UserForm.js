@@ -61,7 +61,7 @@ const UserForm = () =>
                         <input type="text" className="form-control input-form" ref={apellidos} onChange={changeState} required/>
                     </div>
                     <div className="mb-3">
-                        <select id="disabledSelect" className="form-select" ref={tipo} onChange={changeState} required>
+                        <select className="form-select" ref={tipo} onChange={changeState} required>
                             <option disabled selected>Selecciona un rol</option>
                             <option value="admin">Administrador</option>
                             <option value="profesor">Profesor</option>

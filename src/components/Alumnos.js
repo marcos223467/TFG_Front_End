@@ -27,12 +27,6 @@ const Alumnos = ({actualizar}) =>
         }
     },[curso, alumnos.length, asistencias.length]);
 
-    function Volver(event)
-    {
-        event.preventDefault();
-        window.history.back();
-    }
-
     function actualizar(estado)
     {
         if(estado)
@@ -47,11 +41,12 @@ const Alumnos = ({actualizar}) =>
     {
         return(
             <div className="bd-example">
+                <a href="/cursos/activos" className="back">
+                    <i className="fa-solid fa-arrow-left-long"></i>
+                    <p>Volver</p>
+                </a>
                 <div>
-                    <button id="volver" type="button" className="btn btn-dark" onClick={Volver}>Volver</button>
-                </div>
-                <div>
-                    <h1>Curso {curso}</h1>
+                    <h1>{curso}</h1>
                 </div>
                 <div className="container">
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
@@ -79,11 +74,12 @@ const Alumnos = ({actualizar}) =>
     {
         return(
             <div className="bd-example">
+                <a href="/cursos/activos" className="back">
+                    <i className="fa-solid fa-arrow-left-long"></i>
+                    <p>Volver</p>
+                </a>
                 <div>
-                    <button id="volver" type="button" className="btn btn-dark" onClick={Volver}>Volver</button>
-                </div>
-                <div>
-                    <h1>Curso{curso}</h1>
+                    <h1>{curso}</h1>
                 </div>
                 <div className="container">
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">

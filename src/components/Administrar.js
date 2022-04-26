@@ -15,12 +15,6 @@ const Administrar = () =>
         event.preventDefault();
         window.location.href ="/admin_alums";
     }
-
-    function Volver(event)
-    {
-        event.preventDefault();
-        window.location.href ='/menu';
-    }
     return(
         <div className="container-fluid" id="container">
             <a href="/menu" className="back">

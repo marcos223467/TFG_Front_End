@@ -39,17 +39,13 @@ const AdminAlumnos = () =>
             cursos += curs[i] + "  ";
         }
     }
-    function Volver(event)
-    {
-        event.preventDefault();
-        window.location.href ='/admin';
-    }
 
     return(
         <div className="bd-example">
-            <div>
-                <button id="volver" type="button" className="btn btn-secondary" onClick={Volver}>Volver</button>
-            </div>
+            <a href="/admin" className="back">
+                <i className="fa-solid fa-arrow-left-long"></i>
+                <p>Volver</p>
+            </a>
             <table className="table table-striped" id="tabla-adm">
                 <thead>
                     <tr>

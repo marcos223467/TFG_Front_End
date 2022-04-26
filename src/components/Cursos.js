@@ -21,18 +21,14 @@ const Cursos = () =>
         event.preventDefault();
         window.location.href = "/cursoform";
     }
-    function Volver(event)
-    {
-        event.preventDefault();
-        window.history.back();
-    }
     if(us.tipo === "admin")
     {
         return(
             <div className="bd-example">
-                <div>
-                    <button id="volver" type="button" className="btn btn-secondary" onClick={Volver}>Volver</button>
-                </div>
+                <a href="/cursos" className="back">
+                    <i className="fa-solid fa-arrow-left-long"></i>
+                    <p>Volver</p>
+                </a>
                 <button className="btn-menu" onClick={cursoForm}>
                     <div className="card" id="add">
                         <div className="card-body">
@@ -64,9 +60,10 @@ const Cursos = () =>
     {
         return(
             <div className="bd-example">
-                <div>
-                    <button id="volver" type="button" className="btn btn-secondary" onClick={Volver}>Volver</button>
-                </div>
+                <a href="/cursos" className="back">
+                    <i className="fa-solid fa-arrow-left-long"></i>
+                    <p>Volver</p>
+                </a>
                 <div className="container" id="cursos">
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
                         { cursos.map((curso,i) =>{
