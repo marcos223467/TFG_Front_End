@@ -60,12 +60,18 @@ const AlumnoForm = () =>
             });
     }
 
+    function Volver(event)
+    {
+        event.preventDefault();
+        window.history.back();
+    }
+
     return(
         <div className="bd-example">
             <div className="card-form2">
                 <form onSubmit={createAlumn}>
                     <div>
-                        <legend className="card-header mb-3"><a href="/menu"><i className="fa-solid fa-arrow-left-long"></i></a> Alta Alumno</legend>
+                        <legend className="card-header mb-3"><a onClick={Volver}><i className="fa-solid fa-arrow-left-long"></i></a> Alta Alumno</legend>
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Nombre</label>
