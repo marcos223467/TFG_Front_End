@@ -54,7 +54,7 @@ const AdminAlumnos = () =>
                         <th scope="col">Apellidos</th>
                         <th scope="col">Fecha de nacimiento</th>
                         <th scope="col">Edad</th>
-                        <th scope="col">Cursos</th>
+                        <th scope="col">Asignatura</th>
                         <th scope="col">Activo</th>
                         <th scope="col"></th>
                     </tr>
@@ -77,11 +77,11 @@ const AdminAlumnos = () =>
                                     <td>{activo}</td>
                                     <td>
                                         <a href={'/editar_alumno?id=' + alumno._id}>
-                                            <i id="adm-i" class="fa-solid fa-pen-to-square"></i>
+                                            <i id="adm-i" className="fa-solid fa-pen-to-square"></i>
                                         </a>
                                         <button type="button" className="btn-remove" aria-hidden="true" data-bs-toggle="modal" 
                                                 data-bs-target={"#myModal" + i}>
-                                            <i id="adm-i" class="fa-solid fa-trash-can"></i>
+                                            <i id="adm-i" className="fa-solid fa-trash-can"></i>
                                         </button>
 
                                         <div className="modal fade" id={"myModal" + i} tabIndex="-1" role="dialog">

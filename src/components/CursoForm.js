@@ -8,18 +8,18 @@ const CursoForm = () =>
     const url = Global.url;
     const [cursoData, setCursoData] = useState({});
 
-    const tipo = React.createRef();
+    const anyo = React.createRef();
     const nombre = React.createRef();
-    const poblacion = React.createRef();
+    const carrera = React.createRef();
     const entidad = React.createRef();
     const fecha_ini = React.createRef();
     const fecha_fin = React.createRef();
 
     const changeState = () =>{
         setCursoData({
-                tipo: tipo.current.value,          
+                anyo: anyo.current.value,          
                 nombre: nombre.current.value,
-                poblacion: poblacion.current.value,
+                carrera: carrera.current.value,
                 entidad: entidad.current.value,
                 fecha_ini: fecha_ini.current.value,
                 fecha_fin: fecha_fin.current.value
@@ -49,27 +49,28 @@ const CursoForm = () =>
                         <legend className="card-header mb-3"><a href="/cursos/activos"><i className="fa-solid fa-arrow-left-long"></i></a> Nuevo curso</legend>
                     </div>
                     <div className="mb-3">
-                        <label  className="form-label">Nombre</label>
+                        <label  className="form-label">Grado</label>
+                        <input type="text" className="form-control input-form" ref={carrera} onChange={changeState}/>
+                    </div>
+                    <div className="mb-3">
+                        <label  className="form-label">Nombre Asignatura</label>
                         <input type="text" className="form-control input-form" ref={nombre} onChange={changeState}/>
                     </div>
                     <div className="mb-3">
-                        <label  className="">Población</label>
-                        <input type="text" className="form-control input-form" ref={poblacion} onChange={changeState}/>
-                    </div>
-                    <div className="mb-3">
-                        <label  className="">Entidad</label>
+                        <label  className="form-label">Institución</label>
                         <input type="text" className="form-control input-form" ref={entidad} onChange={changeState}/>
                     </div>
                     <div className="mb-3">
-                        <label  className="">Fecha de inicio</label>
+                        <label  className="form-label">Fecha de inicio</label>
                         <input type="date" className="form-control input-form" ref={fecha_ini} onChange={changeState}/>
                     </div>
                     <div className="mb-3">
-                        <label  className="">Fecha de finalización</label>
+                        <label  className="form-label">Fecha de finalización</label>
                         <input type="date" className="form-control input-form" ref={fecha_fin} onChange={changeState}/>
                     </div>
                     <div className="mb-3">
-                        <select className="form-select" ref={tipo} onChange={changeState}>
+                        <label  className="form-label">Año</label>
+                        <select className="form-select" ref={anyo} onChange={changeState}>
                             <option disabled selected>Selecciona un tipo</option>
                             <option>1º</option>
                             <option>2º</option>

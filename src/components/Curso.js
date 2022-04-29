@@ -72,8 +72,8 @@ const Curso = ({id, cursoData}) =>
                             <button className="btn-menu" onClick={IrAlumnos}>
                                 <div className="card-body">
                                     <div className="col"><h3 className="card-title">{cursoData.nombre}</h3></div>
-                                    <div className="col"><p id="txt" className="card-text">Año: {cursoData.tipo}</p></div>
-                                    <div className="col"><p id="txt" className="card-text">Lugar: {cursoData.poblacion}</p></div>
+                                    <div className="col"><p id="txt" className="card-text">Año: {cursoData.anyo}</p></div>
+                                    <div className="col"><p id="txt" className="card-text">Lugar: {cursoData.carrera}</p></div>
                                     <div className="col"><p id="txt" className="card-text">Entidad: {cursoData.entidad}</p></div>
                                     <div className="col"><p id="txt" className="card-text">Inicio: {fecha_ini.getDate() + "-" + fecha_ini.getMonth() + "-" + fecha_ini.getFullYear()}</p></div>
                                     <div className="col"><p id="txt" className="card-text">Fin: {fecha_fin.getDate() + "-" + fecha_fin.getMonth() + "-" + fecha_fin.getFullYear()}</p></div>

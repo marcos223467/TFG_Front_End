@@ -50,7 +50,7 @@ const AlumnoEdit = () =>
         if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
             edad--;
         }
-
+        console.log(edad);
         return edad;
     }
 
@@ -76,7 +76,8 @@ const AlumnoEdit = () =>
             {
                 console.log(error);
             });
-        Volver();
+
+        window.history.back();
     }
 
     function Volver(event)
@@ -89,7 +90,7 @@ const AlumnoEdit = () =>
             <div className="card-form2">
                 <form onSubmit={editAlumn}>
                     <div>
-                        <legend className="card-header mb-3"><a onClick={Volver}><i className="fa-solid fa-arrow-left-long"></i></a> Editar Alumno</legend>
+                        <legend className="card-header mb-3"><a href="#" onClick={Volver}><i className="fa-solid fa-arrow-left-long"></i></a> Editar Alumno</legend>
                     </div>
                     <div className="mb-3">
                         <small className="form-label">Nombre</small>
@@ -101,7 +102,7 @@ const AlumnoEdit = () =>
                     </div>
                     <div className="mb-3">
                         <small className="form-label">Fecha de nacimiento</small>
-                        <input type="date" id="fecha" className="form-control input-form" ref={fecha_nacimiento} onChange={changeState}/>
+                        <input type="date" id="fecha" className="form-control input-form" ref={fecha_nacimiento} onChange={calculaEdad}/>
                     </div>
                     <div className="mb-3">
                         <select id="curs" className="form-select" ref={curso} onChange={changeState}>
