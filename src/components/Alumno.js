@@ -135,107 +135,35 @@ const Alumno = ({id,alumnoData, actualizar}) =>
         event.preventDefault();
         window.location.href = "/asistencias?id=" + alumnoData._id + "&curso=" + curso;
     }
-    if(us.tipo === "admin")
-    {
-        return(
-            <div className="container">
-                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-                    <div className="card" id="alumno">
-                        <div className="card-body">
-                            <div className="row">
-                                <h3 className="card-title">{alumnoData.apellidos} {alumnoData.nombre}</h3>
-                            </div>
-                            <div className="row">
-                                <p id="txt" className="card-text">Edad: {alumnoData.edad}</p>
-                            </div>
-                            <div className="row">
-                                <p id = "txt" className="card-text">Fecha de nacimiento: {fecha.getDate() + "-" + (fecha.getMonth() + 1) + "-" + fecha.getFullYear()}</p>
-                            </div>
+    
+    return(
+        <div className="container">
+            <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+                <div className="card" id="alumno">
+                    <div className="card-body">
+                        <div className="row">
+                            <h3 className="card-title">{alumnoData.apellidos} {alumnoData.nombre}</h3>
                         </div>
                         <div className="row">
-                            <div className="container-fluid" id="container-alumno">
-                                <div className="row row-cols-4 row-cols-sm-4 row-cols-md-4 row-cols-lg-4">
-                                    <div className="col-lg-6 col-md-6 col-sm-6 col-6">
-                                        <button id={id} className="btn btn-secondary btn-asis" onClick={CambiaEstado}>Pendiente</button>
-                                    </div>
-                                    <div className="col-lg-2 col-md-2 col-sm-2 col-2">
-                                        <Spinner id={"spinner"+id} className="spinner" color="secondary" />
-                                    </div>
-                                    <div className="col-lg-2 col-md-2 col-sm-2 col-2">
-                                        <a className="edit" href={'/editar_alumno?id=' + alumnoData._id}>
-                                            <i id="adm-i" class="fa-solid fa-pen-to-square"></i>
-                                        </a>
-                                    </div>
-                                    <div className="col-lg-2 col-md-2 col-sm-2 col-2">
-                                        <button type="button" id="rmv" className="btn-remove" data-bs-toggle="modal" 
-                                            data-bs-target={"#myModal"+id}>
-                                            <i id="adm-i" class="fa-solid fa-trash-can"></i>
-                                        </button>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col">
-                                            <button id="asist" type="button" className="btn btn-primary" onClick={VerAsistencia}>Asistencia</button>
-                                        </div>
-                                    </div>
+                            <p id="txt" className="card-text">Edad: {alumnoData.edad}</p>
+                        </div>
+                        <div className="row">
+                            <p id = "txt" className="card-text">Fecha de nacimiento: {fecha.getDate() + "-" + (fecha.getMonth() + 1) + "-" + fecha.getFullYear()}</p>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="container-fluid" id="container-alumno">
+                            <div className="row row-cols-2 row-cols-sm-2 row-cols-md-2 row-cols-lg-2">
+                                <div className="col-lg-8 col-md-8 col-sm-8 col-8">
+                                    <button id={id} className="btn btn-secondary btn-asis" onClick={CambiaEstado}>Pendiente</button>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="modal fade" id={"myModal" + id} tabIndex="-1" role="dialog">
-                    <div className="modal-dialog" role="document">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <button id="cerrar" type="button" className="btn-close" data-bs-dismiss="modal"  aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                <h4 id="titulo" className="modal-title">Eliminar alumno</h4>
-                            </div>
-                            <div className="modal-body">
-                                <p>¿Estás seguro de querer eliminar este alumno?</p>
-                            </div>
-                            <div className="modal-footer">
-                                <button id="eliminar" type="button" className="btn btn-default" 
-                                        data-dismiss="modal" onClick={Eliminar}>Eliminar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> 
-        )
-    }
-    else if(us.tipo === "profesor")
-    {
-        return(
-            <div className="container">
-                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-                    <div className="card" id="alumno">
-                        <div className="card-body">
-                            <div className="row">
-                                <h3 className="card-title">{alumnoData.apellidos} {alumnoData.nombre}</h3>
-                            </div>
-                            <div className="row">
-                                <p id="txt" className="card-text">Edad: {alumnoData.edad}</p>
-                            </div>
-                            <div className="row">
-                                <p id = "txt" className="card-text">Fecha de nacimiento: {fecha.getDate() + "-" + (fecha.getMonth() + 1) + "-" + fecha.getFullYear()}</p>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="container-fluid" id="container-alumno">
-                                <div className="row row-cols-2 row-cols-sm-2 row-cols-md-2 row-cols-lg-2">
-                                    <div className="col-lg-6 col-md-6 col-sm-6 col-6">
-                                        <button id={id} className="btn btn-secondary btn-asis" onClick={CambiaEstado}>Pendiente</button>
-                                    </div>
-                                    <div className="col-lg-2 col-md-2 col-sm-2 col-2">
-                                        <Spinner id={"spinner"+id} className="spinner" color="secondary" />
-                                    </div>
-                                    
-                                    <div className="row">
-                                        <div className="col">
-                                            <button id="asist" type="button" className="btn btn-primary" onClick={VerAsistencia}>Asistencia</button>
-                                        </div>
+                                <div className="col-lg-2 col-md-2 col-sm-2 col-2">
+                                    <Spinner id={"spinner"+id} className="spinner" color="secondary" />
+                                </div>
+                                
+                                <div className="row">
+                                    <div className="col">
+                                        <button id="asist" type="button" className="btn btn-primary" onClick={VerAsistencia}>Asistencia</button>
                                     </div>
                                 </div>
                             </div>
@@ -243,8 +171,8 @@ const Alumno = ({id,alumnoData, actualizar}) =>
                     </div>
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
     
 }
 

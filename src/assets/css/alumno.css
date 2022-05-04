@@ -73,3 +73,20 @@ h3
 {
     display: block;
 }
+
+.buscador
+{
+    margin-left: 1%;
+    width: 16rem;
+}
+
+.buscador-2
+{
+    width: 10rem;
+}
+
+.buscador-3
+{
+    margin-top: 5%;
+    font-size: 25px;
+}
