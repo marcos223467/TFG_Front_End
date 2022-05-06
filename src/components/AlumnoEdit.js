@@ -15,6 +15,8 @@ const AlumnoEdit = () =>
     const fecha_nacimiento = React.createRef();
     const curso = React.createRef();
 
+    var _edad;
+
     useEffect(() =>{
         const urlParams = window.location.search;
         const params = new URLSearchParams(urlParams);
@@ -34,6 +36,7 @@ const AlumnoEdit = () =>
             document.getElementById("apellidos").value = alumno[0].apellidos;
             document.getElementById("fecha").value = fecha;
             document.getElementById("curs").value = alumno[0].cursos[0];
+            _edad = alumno[0].edad;
         }
         axios.get(url+"cursos").then(res =>{
             getCursos(res.data.cursos);
@@ -50,8 +53,7 @@ const AlumnoEdit = () =>
         if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
             edad--;
         }
-        console.log(edad);
-        return edad;
+        _edad = edad;
     }
 
     const changeState = () =>{
@@ -59,7 +61,7 @@ const AlumnoEdit = () =>
                 nombre: nombre.current.value,
                 apellidos: apellidos.current.value,
                 fecha_nacimiento: fecha_nacimiento.current.value,
-                edad: calculaEdad(),
+                edad: _edad,
                 cursos: curso.current.value,
                 activo: true
         });

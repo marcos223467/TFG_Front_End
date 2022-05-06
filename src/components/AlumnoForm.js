@@ -71,7 +71,7 @@ const AlumnoForm = () =>
             <div className="card-form2">
                 <form onSubmit={createAlumn}>
                     <div>
-                        <legend className="card-header mb-3"><a onClick={Volver}><i className="fa-solid fa-arrow-left-long"></i></a> Alta Alumno</legend>
+                        <legend className="card-header mb-3"><a href="#" onClick={Volver}><i className="fa-solid fa-arrow-left-long"></i></a> Alta Alumno</legend>
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Nombre</label>

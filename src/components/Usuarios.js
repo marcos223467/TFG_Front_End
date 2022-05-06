@@ -17,14 +17,41 @@ const Usuarios = () =>
     //Declaro la función para poder llamarla en el onClick, si llamo directamente elimina todos los usuarios de la base de datos
     function Eliminar(){}
 
+    function Filtrar()
+    {
+        var busqueda = document.getElementById('buscar');
+        var table = document.getElementById("tabla-adm").tBodies[0];
+
+        var texto = busqueda.value.toLowerCase();
+        var r=0;
+        var row;
+        while(row = table.rows[r++])
+        {
+            if ( row.innerText.toLowerCase().indexOf(texto) !== -1 )
+                row.style.display = null;
+            else
+                row.style.display = 'none';
+        }
+    }
+
     return(
         <div className="bd-example">
             <a href="/admin" className="back">
                 <i className="fa-solid fa-arrow-left-long"></i>
                 <p>Volver</p>
             </a>
+
+            <div className="buscador row row-cols-2 row-cols-md-2 row-cols-lg-2">
+                <div className="col">
+                    <input id="buscar" type="text" className="form-control buscador-2" placeholder="Buscar..." onChange={Filtrar}/>
+                </div>
+                <div className="col">
+                    <i className="fa-solid fa-magnifying-glass buscador-3"></i>
+                </div>
+            </div>
+
             <div className="table-responsive">
-                <table className="table table-striped">
+                <table className="table table-striped" id="tabla-adm">
                     <thead>
                         <tr>
                             <th scope="col">#</th>

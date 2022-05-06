@@ -34,9 +34,10 @@ const Asistencias = () =>
 
     return(
         <div className="bd-example">
-            <div>
-                <button id="volver" type="button" className="btn btn-secondary" onClick={Volver}>Volver</button>
-            </div>
+            <a href="#" onClick={Volver} className="back">
+                <i className="fa-solid fa-arrow-left-long"></i>
+                <p>Volver</p>
+            </a>
             <div>
                 <h1>{nombre_alumno}</h1>
             </div>
