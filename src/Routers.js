@@ -16,7 +16,6 @@ import CursoEdit from './components/CursoEdit';
 import AlumnoEdit from './components/AlumnoEdit';
 import Administrar from './components/Administrar';
 import AdminAlumnos from './components/AdminAlumnos';
-import Info from './components/Info';
 import Asistencias from './components/Asistencias';
 import Menu_Cursos from './components/Menu_Cursos';
 import Cursos_Archivados from './components/Cursos_Archivados';
@@ -42,7 +41,6 @@ const Router = () => {
                 <Route exact path="/editar_alumno" element={<AlumnoEdit />} />
                 <Route exact path="/admin" element={<Administrar />} />
                 <Route exact path="/admin_alums" element={<AdminAlumnos />} />
-                <Route exact path="/info" element={<Info/>} />
                 <Route exact path="/asistencias" element={<Asistencias/>} />
             </Routes>
             <Footer/>

@@ -59,7 +59,7 @@ legend
 {
     display:block;
     margin: 0 auto;
-    height: 27rem;
+    height: 32rem;
     background: #f5f5f5;
     width: 20rem;
     border-radius: 15px;
@@ -76,6 +76,20 @@ legend
     width: 20rem;
     border-radius: 15px;
     box-shadow: rgb(0 0 0 / 30%) 0px 10px 14px, rgb(0 0 0 / 22%) 0px 10px 12px;
+}
+
+.row-b
+{
+    display: flex;
+}
+
+.col-b1
+{
+    margin: 0 auto;
+}
+.col-b2
+{
+    margin: 0 auto;
 }
 
 @media (max-width: 700px) {
