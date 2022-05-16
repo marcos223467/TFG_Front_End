@@ -37,11 +37,17 @@ const Alumnos = ({actualizar}) =>
             
         }
     }
+
+    function Volver(event)
+    {
+        event.preventDefault();
+        window.history.back();
+    }
     if(us.tipo === "admin")
     {
         return(
             <div className="bd-example">
-                <a href="/cursos/activos" className="back">
+                <a href="#" onClick={Volver}className="back">
                     <i className="fa-solid fa-arrow-left-long"></i>
                     <p>Volver</p>
                 </a>
@@ -74,7 +80,7 @@ const Alumnos = ({actualizar}) =>
     {
         return(
             <div className="bd-example">
-                <a href="/cursos/activos" className="back">
+                <a href="#" onClick={Volver}className="back">
                     <i className="fa-solid fa-arrow-left-long"></i>
                     <p>Volver</p>
                 </a>

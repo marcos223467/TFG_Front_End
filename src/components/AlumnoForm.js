@@ -6,15 +6,14 @@ import axios from "axios";
 const AlumnoForm = () =>
 {
     const url = Global.url;
-    const [alumData, setAlumData] = useState({});
     const [cursos, getCursos] = useState([]);
-    
+    var alumData = {};
     const nombre = React.createRef();
     const apellidos = React.createRef();
     const fecha_nacimiento = React.createRef();
     var _asignaturas = [];
 
-    var asignaturas = 1;
+    var asignatura = 0;
     var altura = 32;
 
     useEffect(() =>{
@@ -37,22 +36,18 @@ const AlumnoForm = () =>
 
         return edad;
     }
-
-    const changeState = () =>{
-        setAlumData({          
-                nombre: nombre.current.value,
-                apellidos: apellidos.current.value,
-                fecha_nacimiento: fecha_nacimiento.current.value,
-                edad: calculaEdad(),
-                cursos: _asignaturas,
-                activo: true
-        });
-    }
-
     const createAlumn = async(event) =>
     {
         event.preventDefault();
-        changeState();
+        alumData = {
+            nombre: nombre.current.value,
+            apellidos: apellidos.current.value,
+            fecha_nacimiento: fecha_nacimiento.current.value,
+            edad: calculaEdad(),
+            cursos: _asignaturas,
+            activo: true
+        };
+        console.log(alumData);
         axios.post(url+"save_alumno", alumData).then((res) =>
             {
                 console.log(res);
@@ -71,8 +66,8 @@ const AlumnoForm = () =>
 
     function sumaAsignatura()
     {
-        asignaturas++;
-        if(asignaturas > 1)
+        asignatura++;
+        if(asignatura > 0)
         {
             var resta = document.getElementById("resta");
             resta.style.display = "block";
@@ -80,7 +75,7 @@ const AlumnoForm = () =>
 
         var selects = document.getElementById("selects");
         var new_sel = document.createElement("select");
-        new_sel.id = asignaturas;
+        new_sel.id = asignatura;
         new_sel.className = "form-select mb-3";
         new_sel.required = true;
         new_sel.addEventListener("change", getAsignatura, false);
@@ -105,9 +100,9 @@ const AlumnoForm = () =>
     {
         var selects = document.getElementById("selects");
         selects.removeChild(selects.lastChild);
-        asignaturas--;
+        asignatura--;
         _asignaturas.pop();
-        if(asignaturas <= 1)
+        if(asignatura <= 0)
         {
             var resta = document.getElementById("resta");
             resta.style.display = "none";
@@ -116,20 +111,23 @@ const AlumnoForm = () =>
         document.getElementById("form").style.height = altura + "rem";
     }
 
-    function getAsignatura(id)
+    const getAsignatura = (event) =>
     {
-        if(_asignaturas.length < asignaturas )
+        var id = event.target.id;
+        var esta = _asignaturas.find(element => element == document.getElementById(id).value);
+
+        if(esta == undefined) //No está el elemento
         {
-            for(var i = _asignaturas.length; i < asignaturas; i++)
-            {
-                _asignaturas.push(document.getElementById(i+1).value);
-            }
+            if(_asignaturas.length < asignatura + 1) //El numero de asignaturas almacenadas es menor que la seleccionable
+                _asignaturas.push(document.getElementById(id).value);
+            else
+                _asignaturas[id] = document.getElementById(id).value;
         }
         else
         {
-            _asignaturas[id] = document.getElementById(id).value;
+            alert("Ya has seleccionado esa asignatura");
+            document.getElementById(id).value = "Selecciona una asignatura";
         }
-        console.log(_asignaturas);
     }
 
     return(
@@ -141,21 +139,21 @@ const AlumnoForm = () =>
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Nombre</label>
-                        <input type="text" className="form-control input-form" ref={nombre} onChange={changeState} required/>
+                        <input type="text" className="form-control input-form" ref={nombre} required/>
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Apellidos</label>
-                        <input type="text" className="form-control input-form" ref={apellidos} onChange={changeState} required/>
+                        <input type="text" className="form-control input-form" ref={apellidos} required/>
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Fecha de nacimiento</label>
-                        <input type="date" className="form-control input-form" ref={fecha_nacimiento} onChange={changeState} required/>
+                        <input type="date" className="form-control input-form" ref={fecha_nacimiento} required/>
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Asignaturas</label>
                     </div>
                     <div id="selects">
-                        <select id={asignaturas} className="form-select mb-3" onChange={getAsignatura} required>
+                        <select id={asignatura} className="form-select mb-3" onChange={getAsignatura} required>
                             <option disabled selected>Selecciona una Asignatura</option>
                             {cursos.map((curs,i) =>{
                                 return(
@@ -165,8 +163,8 @@ const AlumnoForm = () =>
                         </select>
                     </div>
                     <div className="row-b mb-3">
-                        <button className="btn col-b1" onClick={sumaAsignatura}><i className="fa-solid fa-plus"></i></button>
-                        <button id="resta" className="btn col-b2" onClick={restaAsignatura} style={{display: "none"}}><i className="fa-solid fa-minus"></i></button>
+                        <button type="button" className="btn col-b1" onClick={sumaAsignatura}><i className="fa-solid fa-plus"></i></button>
+                        <button type="button" id="resta" className="btn col-b2" onClick={restaAsignatura} style={{display: "none"}}><i className="fa-solid fa-minus"></i></button>
                     </div>
                     <button type="submit" className="btn btn-form">Registrar</button>
                 </form>
