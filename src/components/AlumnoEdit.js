@@ -9,6 +9,9 @@ const AlumnoEdit = () =>
     const [id, getId] = useState(0);
     const [alumno, getAlumno] = useState([]);
     const [cursos, getCursos] = useState([]);
+    const [asignatura, setAsignatura] = useState(0);
+    const [altura, setAltura] = useState(32);
+    const [_asignaturas, getAsignaturas] = useState([]);
 
     const nombre = React.createRef();
     const apellidos = React.createRef();
@@ -16,11 +19,6 @@ const AlumnoEdit = () =>
     const curso = React.createRef();
 
     var _edad;
-
-    var _asignaturas = [];
-
-    var asignatura = 0;
-    var altura = 32;
 
     useEffect(() =>{
         const urlParams = window.location.search;
@@ -40,7 +38,42 @@ const AlumnoEdit = () =>
             document.getElementById("nombre").value = alumno[0].nombre;
             document.getElementById("apellidos").value = alumno[0].apellidos;
             document.getElementById("fecha").value = fecha;
-            _asignaturas = alumno[0].cursos;
+            getAsignaturas(alumno[0].cursos);
+            var as = 0;
+            var alt = 32;
+            var selects = document.getElementById("selects");
+            for(var i = 0; i < _asignaturas.length; i++)
+            {
+                var select = document.createElement("select");
+                select.id = asignatura;
+                select.className = "form-select mb-3";
+                select.required = true;
+                select.addEventListener("change", getAsignatura, false);
+                var option = document.createElement("option");
+                option.innerHTML = _asignaturas[i];
+                option.selected = true;
+                select.appendChild(option);
+                cursos.map((curs, j) =>
+                {
+                    if(curs.nombre != _asignaturas[i])
+                    {
+                        option = document.createElement("option");
+                        option.innerHTML = curs.nombre;
+                        select.appendChild(option);
+                    }
+                })
+                selects.appendChild(select);
+                as++;
+                alt += 4;
+                document.getElementById("form").style.height = alt + "rem";
+            }
+            setAsignatura(as);
+            setAltura(alt);
+            if(asignatura > 1)
+            {
+                var resta = document.getElementById("resta");
+                resta.style.display = "block";
+            }
         }
         axios.get(url+"cursos").then(res =>{
             getCursos(res.data.cursos);
@@ -94,8 +127,9 @@ const AlumnoEdit = () =>
 
     function sumaAsignatura()
     {
-        asignatura++;
-        if(asignatura > 0)
+        var as = asignatura;
+        as++;
+        if(as > 0)
         {
             var resta = document.getElementById("resta");
             resta.style.display = "block";
@@ -103,7 +137,7 @@ const AlumnoEdit = () =>
 
         var selects = document.getElementById("selects");
         var new_sel = document.createElement("select");
-        new_sel.id = asignatura;
+        new_sel.id = as;
         new_sel.className = "form-select mb-3";
         new_sel.required = true;
         new_sel.addEventListener("change", getAsignatura, false);
@@ -119,37 +153,47 @@ const AlumnoEdit = () =>
             new_sel.appendChild(option);
         })
         selects.appendChild(new_sel);
-
-        altura += 4;
-        document.getElementById("form").style.height = altura + "rem";
+        setAsignatura(as);
+        var alt = altura;
+        alt += 4;
+        document.getElementById("form").style.height = alt + "rem";
+        setAltura(alt);
     }
 
     function restaAsignatura()
     {
         var selects = document.getElementById("selects");
         selects.removeChild(selects.lastChild);
-        asignatura--;
-        _asignaturas.pop();
-        if(asignatura <= 0)
+        var as = asignatura;
+        as--;
+        var _as = _asignaturas;
+        _as.pop();
+        if(as <= 0)
         {
             var resta = document.getElementById("resta");
             resta.style.display = "none";
         }
-        altura -= 4;
-        document.getElementById("form").style.height = altura + "rem";
+        var alt = altura;
+        alt += 4;
+        document.getElementById("form").style.height = alt + "rem";
+        setAltura(alt);
+        getAsignaturas(_as);
     }
 
     const getAsignatura = (event) =>
     {
         var id = event.target.id;
-        var esta = _asignaturas.find(element => element == document.getElementById(id).value);
+        var _as = _asignaturas;
+        var esta = _as.find(element => element == document.getElementById(id).value);
 
         if(esta == undefined) //No está el elemento
         {
-            if(_asignaturas.length < asignatura + 1) //El numero de asignaturas almacenadas es menor que la seleccionable
-                _asignaturas.push(document.getElementById(id).value);
+            if(_as.length < asignatura + 1) //El numero de asignaturas almacenadas es menor que la seleccionable
+                _as.push(document.getElementById(id).value);
             else
-                _asignaturas[id] = document.getElementById(id).value;
+                _as[id] = document.getElementById(id).value;
+
+            getAsignaturas(_as);
         }
         else
         {
@@ -181,23 +225,6 @@ const AlumnoEdit = () =>
                         <label className="form-label">Asignaturas</label>
                     </div>
                     <div id="selects">
-                        {
-                            //FALTA HACER QUE SE MUESTREN LAS ASIGNATURAS QUE YA SE TIENEN
-                            _asignaturas.map((sel, i) => {
-                                asignatura++;
-                                return(
-                                    <select id={i} className="form-select mb-3" onChange={getAsignatura} required>
-                                        <option disabled selected>{sel}</option>
-                                        {cursos.map((curs,i) =>{
-                                            return(
-                                                <option>{curs.nombre}</option>
-                                            );
-                                        })}
-                                    </select>
-                                );
-                            })
-                        }
-                        
                     </div>
                     <div className="row-b mb-3">
                         <button type="button" className="btn col-b1" onClick={sumaAsignatura}><i className="fa-solid fa-plus"></i></button>
