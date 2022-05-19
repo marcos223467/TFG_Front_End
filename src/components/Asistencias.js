@@ -32,6 +32,12 @@ const Asistencias = () =>
         window.history.back();
     }
 
+    function irAsistForm(event)
+    {
+        event.preventDefault();
+        window.location.href = "/asistencias/add?id=" + id_alumno + "&curso=" + curso + "&nombre=" + nombre_alumno;
+    }
+
     return(
         <div className="bd-example">
             <a href="#" onClick={Volver} className="back">
@@ -47,6 +53,7 @@ const Asistencias = () =>
                         <th scope="col">Fecha</th>
                         <th scope="col">Curso</th>
                         <th scope="col">Asistencia</th>
+                        <th scope="col">Justificada</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,12 +65,14 @@ const Asistencias = () =>
                                     <th scope="row">{asistencia.fecha}</th>
                                     <td>{curso}</td>
                                     <td>{asistencia.estado}</td>
+                                    <td>---------</td>
                                 </tr>
                             )
                         })
                     }
                 </tbody>
             </table>
+            <button type="button" className="btn col-b1" onClick={irAsistForm}><i className="fa-solid fa-plus"></i></button>
         </div>
     )
 }

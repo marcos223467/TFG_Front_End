@@ -1,3 +1,2 @@
 Poner que se puedan adjuntar justificantes a un retraso o una falta
 Hacer un boton de añadir en las asistencias para añadir una asistencia de otro dia
-Arreglar el formulario de editar curso
