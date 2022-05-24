@@ -1,4 +1,5 @@
 Poner que se puedan adjuntar justificantes a un retraso o una falta, ¡Arreglarlo!
+Hacer que funcione el JQuery
 
 
 
@@ -8,3 +9,4 @@ PREGUNTAS:
 ¿Lo subo a un servidor?
 ¿En la defensa tendré que hacer una demostración en tiempo real de la aplicación?
 ¿Que información pongo de los alumnos?
+¿Hago distincion entre profesores?

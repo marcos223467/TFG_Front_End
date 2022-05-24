@@ -12,14 +12,12 @@ const Alumno = ({id,alumnoData, actualizar}) =>
     const [curso, getCurso] = useState("");
     var fecha_act = new Date();
     var _fecha = fecha_act.getDate() + "-" + (fecha_act.getMonth() + 1) + "-" +  fecha_act.getFullYear();
-    const us = JSON.parse(document.cookie);
-    var _justificada = "No";
 
     useEffect(() =>{
         const urlParams = window.location.search;
         const params = new URLSearchParams(urlParams);
         getCurso(params.get("curso"));
-        if(curso != ""){
+        if(curso !== ""){
             axios.get(url+"get_asistencia/"+ curso + "/" + alumnoData._id).then(res =>{
                 getAsistencia(res.data.asistencia);
                 if(asistencia.length > 0)
@@ -48,9 +46,10 @@ const Alumno = ({id,alumnoData, actualizar}) =>
                                 document.getElementById(id).style.backgroundColor = '#E42525';
                                 setEstado(3);
                         break;
+                        default:
+                            break;
                     }
                     document.getElementById("spinner"+id).style.display = "none";
-                    Justificante();
                     
                 }
             })
@@ -66,16 +65,15 @@ const Alumno = ({id,alumnoData, actualizar}) =>
         switch(estado)
         {
             case 0: asist = "Presente";
-                    _justificada = "";
             break;
             case 1: asist = "Retraso";
-                    _justificada = "";
             break;
             case 2: asist = "No Presente";
             break;
             case 3: asist = "Pendiente";
-                    _justificada = "";
             break;
+            default:
+                break;
         }
 
         var asistData =
@@ -85,7 +83,7 @@ const Alumno = ({id,alumnoData, actualizar}) =>
             nombre_curso : curso,
             fecha : _fecha,
             estado: asist,
-            justificada: _justificada
+            justificada: "----"
         }
 
         if(asistencia.length === 0)
@@ -118,9 +116,8 @@ const Alumno = ({id,alumnoData, actualizar}) =>
                 case 'Pendiente': 
                         setEstado(0);
                 break;
-            }
-            Justificante();
-        
+                default:break;
+            }        
         
         }
     }
@@ -139,80 +136,6 @@ const Alumno = ({id,alumnoData, actualizar}) =>
         window.location.href = "/asistencias?id=" + alumnoData._id + "&curso=" + curso;
     }
     
-    function Justificante()
-    {
-        if(estado == 3)
-        {
-            document.getElementById("justificar").style.display = "block";
-            var cross = document.getElementById("cross");
-            var tick = document.getElementById("tick");
-            if(asistencia[0].justificada == "Si")
-            {
-                cross.style.display = "none";
-                tick.style.display = "block";
-                tick.style.color = "green";
-                _justificada = "Si";
-            }
-            else
-            {
-                cross.style.display = "block";
-                cross.style.color = "red";
-                tick.style.display = "none";
-                _justificada = "No";
-            }
-        }
-        else
-        {
-            document.getElementById("justificar").style.display = "none";
-        }
-    }
-
-    function Justificar()
-    {
-        var cross = document.getElementById("cross");
-        var tick = document.getElementById("tick");
-        if(cross.style.display == "none")
-        {
-            cross.style.display = "block";
-            cross.style.color = "red";
-            tick.style.display = "none";
-            _justificada = "No";
-        }
-        else
-        {
-            cross.style.display = "none";
-            tick.style.display = "block";
-            tick.style.color = "green";
-            _justificada = "Si";
-        }
-
-        var asist
-        switch(estado)
-        {
-            case 0: asist = "Presente";
-                    _justificada = "";
-            break;
-            case 1: asist = "Retraso";
-                    _justificada = "";
-            break;
-            case 2: asist = "No Presente";
-            break;
-            case 3: asist = "Pendiente";
-                    _justificada = "";
-            break;
-        }
-
-        var asistData =
-        {
-            id_alumno : alumnoData._id,
-            nombre_alumno : alumnoData.apellidos + " " + alumnoData.nombre,
-            nombre_curso : curso,
-            fecha : _fecha,
-            estado: asist,
-            justificada: _justificada
-        }
-        axios.put(url + 'asistencia/' + asistencia[0]._id, asistData);
-    }
 
     return(
         <div className="container">
@@ -231,18 +154,12 @@ const Alumno = ({id,alumnoData, actualizar}) =>
                     </div>
                     <div className="row">
                         <div className="container-fluid" id="container-alumno">
-                            <div className="row row-cols-3 row-cols-sm-3 row-cols-md-3 row-cols-lg-3">
-                                <div className="col-lg-6 col-md-6 col-sm-6 col-6">
+                            <div className="row row-cols-2 row-cols-sm-2 row-cols-md-2 row-cols-lg-2">
+                                <div className="col-lg-8 col-md-8 col-sm-8 col-8">
                                     <button id={id} className="btn btn-secondary btn-asis" onClick={CambiaEstado}>Pendiente</button>
                                 </div>
-                                <div className="col-lg-1 col-md-1 col-sm-1 col-1">
-                                    <Spinner id={"spinner"+id} className="spinner" color="secondary" />
-                                </div>
                                 <div className="col-lg-2 col-md-2 col-sm-2 col-2">
-                                    <button id="justificar" className="btn" style={{display:"none"}} onClick={Justificar}>Justificada
-                                    <i id="cross" className="fa-solid fa-xmark" style={{color:"red"}}></i>
-                                    <i id="tick" className="fa-solid fa-check" style={{display:"none"}}></i>
-                                    </button>
+                                    <Spinner id={"spinner"+id} className="spinner" color="secondary" />
                                 </div>
                                 <div className="row">
                                     <div className="col">

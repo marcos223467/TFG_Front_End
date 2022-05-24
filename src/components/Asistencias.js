@@ -38,8 +38,31 @@ const Asistencias = () =>
         window.location.href = "/asistencias/add?id=" + id_alumno + "&curso=" + curso + "&nombre=" + nombre_alumno;
     }
 
+    function Justificar()
+    {
+        var justificante = document.getElementById("justificante");
+        if(justificante.files[0] != null)
+        {
+            var extension = justificante.files[0].name.split('.').pop();
+            if(extension === "pdf" || extension === "png" || extension === "jpeg" || extension === "jpg")
+            {
+                var filename = (Math.random()+1).toString(36).substring(2) + '.' + extension;
+                const formData = new FormData();
+                formData.append('file', justificante.files[0], filename);
+
+                axios.post(url + "save_file", formData).then(res=>{
+                    console.log(res);
+                });
+            }
+            else
+            {
+                alert("Extensión no admitida");
+            }
+        }   
+    }
+
     return(
-        <div className="bd-example">
+        <div className="bd-example mb-3">
             <a href="#" onClick={Volver} className="back">
                 <i className="fa-solid fa-arrow-left-long"></i>
                 <p>Volver</p>
@@ -60,19 +83,41 @@ const Asistencias = () =>
                     {
                         asistencias.map((asistencia, i) =>
                         {
-                            return(
-                                <tr key={i}>
-                                    <th scope="row">{asistencia.fecha}</th>
-                                    <td>{curso}</td>
-                                    <td>{asistencia.estado}</td>
-                                    <td>{asistencia.justificada}</td>
-                                </tr>
-                            )
+                            if(asistencia.estado === "No Presente" || asistencia.estado === "Retraso")
+                            {
+                                return(
+                                    <tr key={i}>
+                                        <th scope="row">{asistencia.fecha}</th>
+                                        <td>{curso}</td>
+                                        <td>{asistencia.estado}</td>
+                                        <td>
+                                            <div>
+                                                <label className="form-label custom-file-upload">
+                                                    Justificar
+                                                    <input className="form-control form-control-sm" type="file" id="justificante" onChange={Justificar}/>
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                )
+                            }
+                            else
+                            {
+                                return(
+                                    <tr key={i}>
+                                        <th scope="row">{asistencia.fecha}</th>
+                                        <td>{curso}</td>
+                                        <td>{asistencia.estado}</td>
+                                        <td>{asistencia.justificada}</td>
+                                    </tr>
+                                )
+                            }
+                            
                         })
                     }
                 </tbody>
             </table>
-            <button type="button" className="btn col-b1" onClick={irAsistForm}><i className="fa-solid fa-plus"></i></button>
+            <button type="button" className="btn col-b1 mb-4" onClick={irAsistForm}><i className="fa-solid fa-plus"></i></button>
         </div>
     )
 }
