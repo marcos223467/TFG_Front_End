@@ -1,2 +1,10 @@
-Poner que se puedan adjuntar justificantes a un retraso o una falta
-Hacer un boton de añadir en las asistencias para añadir una asistencia de otro dia
+Poner que se puedan adjuntar justificantes a un retraso o una falta, ¡Arreglarlo!
+
+
+
+
+
+PREGUNTAS:
+¿Lo subo a un servidor?
+¿En la defensa tendré que hacer una demostración en tiempo real de la aplicación?
+¿Que información pongo de los alumnos?

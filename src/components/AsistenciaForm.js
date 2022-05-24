@@ -8,9 +8,6 @@ const AsistenciaForm = () =>
     const [id_alumno, getId] = useState("");
     const [curso, getCurso] = useState("");
     const [nombre_alumno, getAlum] = useState("");
-    const [asistData, setAsistData] = useState({});
-
-    const fecha = React.createRef();
 
     var estado = 0;
     var asist = "Pendiente";
@@ -29,22 +26,24 @@ const AsistenciaForm = () =>
         }
     },[curso,id_alumno,nombre_alumno]);
 
-    const changeState = () =>
-    {
-        setAsistData({
-            id_alumno: id_alumno,
-            nombre_alumno: nombre_alumno,
-            nombre_curso: curso.nombre,
-            fecha: fecha.current.value,
-            estado: asist
-        });
-
-        console.log(asistData);
-    }
 
     const createAsist = async(event) =>
     {
         event.preventDefault();
+        var _fecha = document.getElementById("fecha").value;
+        var dia = _fecha[8]+_fecha[9];
+        var mes = _fecha[5] + _fecha[6];
+        var anyo = _fecha[0]+ _fecha[1] + _fecha[2] + _fecha[3];
+
+        _fecha = dia+"-"+mes+"-"+anyo;
+        var asistData = {
+            id_alumno: id_alumno,
+            nombre_alumno: nombre_alumno,
+            nombre_curso: curso,
+            fecha: _fecha,
+            estado: asist
+        };
+        await axios.post(url+'save_asistencia', asistData).then(window.history.back());
     }
 
     function Volver(event)
@@ -78,13 +77,11 @@ const AsistenciaForm = () =>
                     document.getElementById("estado").style.backgroundColor = '#5c636a';
             break;
         }
-        changeState();
-        console.log(asist);
     }
 
     return(
         <div className="bd-example">
-            <div className="card-form2" id="form">
+            <div className="card-form2-2" id="form">
                 <form onSubmit={createAsist}>
                     <div>
                         <legend className="card-header mb-3"><a href="#" onClick={Volver}><i className="fa-solid fa-arrow-left-long"></i></a> Añadir Asistencia</legend>
@@ -99,10 +96,10 @@ const AsistenciaForm = () =>
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Fecha</label>
-                        <input type="date" className="form-control input-form" ref={fecha} onChange={changeState} required/>
+                        <input type="date" id="fecha" className="form-control input-form" required/>
                     </div>
                     <div className="mb-3">
-                        <button type="button" id="estado" className="btn btn-secondary btn-asis" onClick={CambiaEstado}>Pendiente</button>
+                        <button type="button" id="estado" className="btn btn-secondary btn-asis-2" onClick={CambiaEstado}>Pendiente</button>
                     </div>   
                     <button type="submit" className="btn btn-form">Registrar</button>
                 </form>

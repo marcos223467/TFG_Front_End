@@ -5,14 +5,14 @@ import axios from "axios";
 const AlumnoEdit = () =>
 {
     const url = Global.url;
-    const [alumData, setAlumData] = useState({});
     const [id, getId] = useState(0);
     const [alumno, getAlumno] = useState([]);
     const [cursos, getCursos] = useState([]);
-    const [asignatura, setAsignatura] = useState(0);
     const [altura, setAltura] = useState(32);
-    const [_asignaturas, getAsignaturas] = useState([]);
+    const [_asignaturas, setAsignaturas] = useState([]);
 
+    var asignaturas_aux = [];
+    var asignatura = 0;
     const nombre = React.createRef();
     const apellidos = React.createRef();
     const fecha_nacimiento = React.createRef();
@@ -38,14 +38,13 @@ const AlumnoEdit = () =>
             document.getElementById("nombre").value = alumno[0].nombre;
             document.getElementById("apellidos").value = alumno[0].apellidos;
             document.getElementById("fecha").value = fecha;
-            getAsignaturas(alumno[0].cursos);
-            var as = 0;
+            setAsignaturas(alumno[0].cursos);
             var alt = 32;
             var selects = document.getElementById("selects");
             for(var i = 0; i < _asignaturas.length; i++)
             {
                 var select = document.createElement("select");
-                select.id = asignatura;
+                select.id = i;
                 select.className = "form-select mb-3";
                 select.required = true;
                 select.addEventListener("change", getAsignatura, false);
@@ -63,27 +62,22 @@ const AlumnoEdit = () =>
                     }
                 })
                 selects.appendChild(select);
-                as++;
                 alt += 4;
                 document.getElementById("form").style.height = alt + "rem";
             }
-            setAsignatura(as);
             setAltura(alt);
-            if(asignatura > 1)
-            {
-                var resta = document.getElementById("resta");
-                resta.style.display = "block";
-            }
+
+            compruebaAsignaturas(i);
         }
         axios.get(url+"cursos").then(res =>{
             getCursos(res.data.cursos);
         })
-    },[id, alumno.length,cursos.length]);
+    },[id, alumno.length,cursos.length,_asignaturas.length]);
 
     function calculaEdad()
     {
         var hoy = new Date();
-        var cumpleanos = new Date(alumData.fecha_nacimiento);
+        var cumpleanos = new Date(alumno[0].fecha_nacimiento);
         var edad = hoy.getFullYear() - cumpleanos.getFullYear();
         var m = hoy.getMonth() - cumpleanos.getMonth();
     
@@ -93,30 +87,36 @@ const AlumnoEdit = () =>
         _edad = edad;
     }
 
-    const changeState = () =>{
-        setAlumData({          
-                nombre: nombre.current.value,
-                apellidos: apellidos.current.value,
-                fecha_nacimiento: fecha_nacimiento.current.value,
-                edad: _edad,
-                cursos: curso.current.value,
-                activo: true
-        });
-    }
-
-    const editAlumn = async(event) =>
+    const editAlumn = (event) =>
     {
         event.preventDefault();
-        changeState();
-        axios.put(url+"alumno/" + id, alumData).then((res) =>
-            {
-                console.log(res);
-            },(error) =>
+        console.log(_asignaturas);
+        var alumData =
+        {
+            nombre: document.getElementById("nombre").value,
+            apellidos: document.getElementById("apellidos").value,
+            fecha_nacimiento: document.getElementById("fecha").value,
+            edad: _edad,
+            cursos: _asignaturas,
+            activo: true
+        }
+        console.log(alumData);
+        axios.put(url+"alumno/" + id, alumData).then((error) =>
             {
                 console.log(error);
             });
 
         window.history.back();
+    }
+
+    function compruebaAsignaturas(as)
+    {
+        asignatura = as;
+        if(as > 1)
+        {
+            var resta = document.getElementById("resta");
+            resta.style.display = "block";
+        }
     }
 
     function Volver(event)
@@ -127,17 +127,16 @@ const AlumnoEdit = () =>
 
     function sumaAsignatura()
     {
-        var as = asignatura;
-        as++;
-        if(as > 0)
-        {
-            var resta = document.getElementById("resta");
-            resta.style.display = "block";
-        }
+        asignaturas_aux = _asignaturas;
+        asignaturas_aux.push("");
+        setAsignaturas(asignaturas_aux);
+        
+        var resta = document.getElementById("resta");
+        resta.style.display = "block";
 
         var selects = document.getElementById("selects");
         var new_sel = document.createElement("select");
-        new_sel.id = as;
+        new_sel.id = _asignaturas.length-1;
         new_sel.className = "form-select mb-3";
         new_sel.required = true;
         new_sel.addEventListener("change", getAsignatura, false);
@@ -153,53 +152,53 @@ const AlumnoEdit = () =>
             new_sel.appendChild(option);
         })
         selects.appendChild(new_sel);
-        setAsignatura(as);
         var alt = altura;
         alt += 4;
         document.getElementById("form").style.height = alt + "rem";
-        setAltura(alt);
+        console.log(_asignaturas);
     }
 
     function restaAsignatura()
     {
         var selects = document.getElementById("selects");
         selects.removeChild(selects.lastChild);
-        var as = asignatura;
-        as--;
-        var _as = _asignaturas;
-        _as.pop();
-        if(as <= 0)
+        
+        asignatura = _asignaturas.length;
+        asignaturas_aux = _asignaturas;
+
+        asignatura--;
+        asignaturas_aux.pop();
+
+        console.log(asignaturas_aux);
+        console.log(asignatura);
+        if(asignatura <= 1)
         {
             var resta = document.getElementById("resta");
             resta.style.display = "none";
         }
-        var alt = altura;
-        alt += 4;
-        document.getElementById("form").style.height = alt + "rem";
-        setAltura(alt);
-        getAsignaturas(_as);
+        setAsignaturas(asignaturas_aux);
+        console.log(_asignaturas);
     }
 
     const getAsignatura = (event) =>
     {
         var id = event.target.id;
-        var _as = _asignaturas;
-        var esta = _as.find(element => element == document.getElementById(id).value);
+        asignaturas_aux = _asignaturas;
+        var esta = asignaturas_aux.find(element => element == document.getElementById(id).value);
 
         if(esta == undefined) //No está el elemento
         {
-            if(_as.length < asignatura + 1) //El numero de asignaturas almacenadas es menor que la seleccionable
-                _as.push(document.getElementById(id).value);
-            else
-                _as[id] = document.getElementById(id).value;
+            asignaturas_aux[id] = document.getElementById(id).value;
 
-            getAsignaturas(_as);
+            setAsignaturas(asignaturas_aux);
         }
         else
         {
             alert("Ya has seleccionado esa asignatura");
             document.getElementById(id).value = "Selecciona una asignatura";
         }
+
+        console.log(_asignaturas);
     }
 
     return(
@@ -211,15 +210,15 @@ const AlumnoEdit = () =>
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Nombre</label>
-                        <input id="nombre" type="text" className="form-control input-form" ref={nombre} required/>
+                        <input id="nombre" type="text" className="form-control input-form" required/>
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Apellidos</label>
-                        <input id="apellidos" type="text" className="form-control input-form" ref={apellidos} required/>
+                        <input id="apellidos" type="text" className="form-control input-form" required/>
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Fecha de nacimiento</label>
-                        <input type="date" id="fecha" className="form-control input-form" ref={fecha_nacimiento} onChange={calculaEdad}/>
+                        <input type="date" id="fecha" className="form-control input-form" onChange={calculaEdad}/>
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Asignaturas</label>

@@ -51,6 +51,12 @@ h3
     margin-right: 10% !important;
 }
 
+.btn-asis-2
+{
+    width: 10rem;
+    height: 3rem;
+}
+
 .edit
 {
     position: relative;

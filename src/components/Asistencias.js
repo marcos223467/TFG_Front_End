@@ -65,7 +65,7 @@ const Asistencias = () =>
                                     <th scope="row">{asistencia.fecha}</th>
                                     <td>{curso}</td>
                                     <td>{asistencia.estado}</td>
-                                    <td>---------</td>
+                                    <td>{asistencia.justificada}</td>
                                 </tr>
                             )
                         })
