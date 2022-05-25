@@ -33,7 +33,12 @@
 
 input[type="file"] 
 {
-    display: none;
+    margin: 0 auto;
+}
+
+.file-uploader
+{
+    width: 20%;
 }
 
 .custom-file-upload

@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import {FileUploader} from "./FileUploader";
 import Global from '../Global';
 import axios from "axios";
 import '../assets/css/usuarios.css';
@@ -50,8 +51,16 @@ const Asistencias = () =>
                 const formData = new FormData();
                 formData.append('file', justificante.files[0], filename);
 
-                axios.post(url + "save_file", formData).then(res=>{
+                /*axios.post(url + "save_file", formData).then(res=>{
                     console.log(res);
+                });*/
+
+                fetch('../controllers/upload_file.js', {
+                    method: 'post',
+                    headers: {
+                        'Accept' : 'application/json'
+                    },
+                    body: formData
                 });
             }
             else
@@ -90,13 +99,8 @@ const Asistencias = () =>
                                         <th scope="row">{asistencia.fecha}</th>
                                         <td>{curso}</td>
                                         <td>{asistencia.estado}</td>
-                                        <td>
-                                            <div>
-                                                <label className="form-label custom-file-upload">
-                                                    Justificar
-                                                    <input className="form-control form-control-sm" type="file" id="justificante" onChange={Justificar}/>
-                                                </label>
-                                            </div>
+                                        <td className="file-uploader">
+                                            <FileUploader/>
                                         </td>
                                     </tr>
                                 )
@@ -118,6 +122,7 @@ const Asistencias = () =>
                 </tbody>
             </table>
             <button type="button" className="btn col-b1 mb-4" onClick={irAsistForm}><i className="fa-solid fa-plus"></i></button>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
         </div>
     )
 }
