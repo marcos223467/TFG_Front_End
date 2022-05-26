@@ -20,7 +20,9 @@ const Asistencias = () =>
         {
             axios.get(url+"get_alum_asist/" + curso + "/" + id_alumno).then(res =>{
                 getAsistencias(res.data.alasis);
-                getAlum(asistencias[0].nombre_alumno);
+            });
+            axios.get(url + "get_alumno/" + id_alumno).then(res => {
+                getAlum(res.data.alumno[0].nombre + " " + res.data.alumno[0].apellidos);
             });
             
         }
@@ -38,8 +40,8 @@ const Asistencias = () =>
         window.location.href = "/asistencias/add?id=" + id_alumno + "&curso=" + curso + "&nombre=" + nombre_alumno;
     }
 
-    function Eliminar()
-    {}
+    function Eliminar(){}
+    function VerJustificante(){}
 
     return(
         <div className="bd-example mb-3">
@@ -75,7 +77,45 @@ const Asistencias = () =>
                                         <td>
                                             <button type="button" className="btn-remove" aria-hidden="true" data-bs-toggle="modal" 
                                                     data-bs-target={"#myModal" + i}>
-                                                <i id="adm-i" class="fa-solid fa-trash-can"></i>
+                                                <i id="adm-i" className="fa-solid fa-trash-can"></i>
+                                            </button>
+
+                                            <div className="modal fade" id={"myModal" + i} tabIndex="-1" role="dialog">
+                                                <div className="modal-dialog" role="document">
+                                                    <div className="modal-content">
+                                                        <div className="modal-header">
+                                                            <button id="cerrar" type="button" className="btn-close" data-bs-dismiss="modal"  aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                            <h4 id="titulo" className="modal-title">Eliminar usuario</h4>
+                                                        </div>
+                                                        <div className="modal-body">
+                                                            <p>¿Estás seguro de querer eliminar esta asistencia?</p>
+                                                        </div>
+                                                        <div className="modal-footer">
+                                                            <button id="eliminar" type="button" className="btn btn-default" 
+                                                                    data-dismiss="modal" onClick={Eliminar = () => { axios.delete(url+"/delete_asistencia/" + asistencia._id).then(window.location.reload());}}>Eliminar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </td>
+                                    </tr>
+                                )
+                            }
+                            else if(asistencia.justificada === "Si")
+                            {
+                                return(
+                                    <tr key={i}>
+                                        <th scope="row">{asistencia.fecha}</th>
+                                        <td>{curso}</td>
+                                        <td>{asistencia.estado}</td>
+                                        <td><button className="btn" onClick={VerJustificante = () =>{ window.open("../../../../TFG_Back_End/justificantes/4oeutsom52.pdf", '_blank').focus();}}>{asistencia.justificada}</button></td>
+                                        <td>
+                                            <button type="button" className="btn-remove" aria-hidden="true" data-bs-toggle="modal" 
+                                                    data-bs-target={"#myModal" + i}>
+                                                <i id="adm-i" className="fa-solid fa-trash-can"></i>
                                             </button>
 
                                             <div className="modal fade" id={"myModal" + i} tabIndex="-1" role="dialog">
@@ -113,7 +153,7 @@ const Asistencias = () =>
                                         <td>
                                             <button type="button" className="btn-remove" aria-hidden="true" data-bs-toggle="modal" 
                                                     data-bs-target={"#myModal" + i}>
-                                                <i id="adm-i" class="fa-solid fa-trash-can"></i>
+                                                <i id="adm-i" className="fa-solid fa-trash-can"></i>
                                             </button>
 
                                             <div className="modal fade" id={"myModal" + i} tabIndex="-1" role="dialog">

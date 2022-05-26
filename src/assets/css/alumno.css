@@ -70,9 +70,10 @@ h3
 #asist
 {
     display:block;
-    width: 18rem;
+    color: white;
+    background-color: rgb(103, 103, 248);
+    width: 200%;
     margin-top: 15%;
-    margin-left: 5%;
 }
 
 .display-block

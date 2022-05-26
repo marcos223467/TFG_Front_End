@@ -1,5 +1,4 @@
-Poner que se puedan adjuntar justificantes a un retraso o una falta, ¡Arreglarlo!
-Hacer que funcione el JQuery
+Hacer que puedas ver los justificantes
 
 
 

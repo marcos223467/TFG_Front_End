@@ -165,8 +165,8 @@ const Alumno = ({id,alumnoData, actualizar}) =>
                                     <Spinner id={"spinner"+id} className="spinner" color="secondary" />
                                 </div>
                                 <div className="row">
-                                    <div className="col">
-                                        <button id="asist" type="button" className="btn btn-primary" onClick={VerAsistencia}>Asistencia</button>
+                                    <div className="col mb-3">
+                                        <button id="asist" type="button" className="btn" onClick={VerAsistencia}>Asistencia</button>
                                     </div>
                                 </div>
                             </div>

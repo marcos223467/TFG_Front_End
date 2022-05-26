@@ -21,6 +21,10 @@ const Justificar = () =>
             axios.get(url + "get_asistencia/"+id_asistencia).then(res =>{
                 getAsistencia(res.data.asistencia);
             });
+            
+        }
+        if(asistencia.length > 0)
+        {
             document.getElementById("nombre").value = asistencia[0].nombre_alumno;
             document.getElementById("asig").value = asistencia[0].nombre_curso;
             document.getElementById("fecha").value = asistencia[0].fecha;
@@ -39,14 +43,34 @@ const Justificar = () =>
         var extension = file.name.split('.').pop();
         if(extension === "pdf" || extension === "png" || extension === "jpeg" || extension === "jpg")
         {
+            var filename = (Math.random()+1).toString(36).substring(2) + '.' + extension;
+            console.log(filename);
             const data = new FormData();
-            data.append('file', file);
+            file.originalname = filename;
+            data.append('file', file, filename);
 
             axios.post(upl + 'upload', data).then((e) => {
-                alert("Subido correctamente");
+                console.log("Subido correctamente");
 
             }).catch((e) => {
                 alert("No se ha posido subir correctamente, intentelo de nuevo");
+            });
+
+            var asistData =
+            {
+                id_alumno : asistencia[0].id_alumno,
+                nombre_alumno : asistencia[0].nombre_alumno,
+                nombre_curso : asistencia[0].nombre_curso,
+                fecha : asistencia[0].fecha,
+                estado: asistencia[0].estado,
+                justificada: "Si"
+            }
+            console.log(asistData);
+
+            axios.put(url + 'asistencia/' + asistencia[0]._id, asistData).then((e)=> {
+                window.history.back();
+            }).catch((e) =>{
+                console.log("No se ha actualizado la asistencia");
             });
         }
         else
@@ -82,7 +106,7 @@ const Justificar = () =>
                         <input type="text" id="fecha" className="form-control input-form" style={{textAlign: "center"}} disabled/>
                     </div>  
                     <div className="mb-3"> 
-                        <label className="form-label">Justificante</label>       
+                        <label className="form-label mb-3">Justificante</label>       
                         <input className="form-control form-control-sm" type="file" onChange={onInputChange}/>
                         <button className="btn btn-primary just">Justificar</button>
                     </div>
