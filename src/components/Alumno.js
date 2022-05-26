@@ -62,13 +62,16 @@ const Alumno = ({id,alumnoData, actualizar}) =>
     const controlAsistencia = async() =>
     {
         var asist
+        var just = "----"
         switch(estado)
         {
             case 0: asist = "Presente";
             break;
             case 1: asist = "Retraso";
+                    just = "No";
             break;
             case 2: asist = "No Presente";
+                    just = "No";
             break;
             case 3: asist = "Pendiente";
             break;
@@ -83,7 +86,7 @@ const Alumno = ({id,alumnoData, actualizar}) =>
             nombre_curso : curso,
             fecha : _fecha,
             estado: asist,
-            justificada: "----"
+            justificada: just
         }
 
         if(asistencia.length === 0)

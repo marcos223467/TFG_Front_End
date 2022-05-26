@@ -11,6 +11,7 @@ const AsistenciaForm = () =>
 
     var estado = 0;
     var asist = "Pendiente";
+    var just = "----";
 
     useEffect(() =>{
         const urlParams = window.location.search;
@@ -42,7 +43,7 @@ const AsistenciaForm = () =>
             nombre_curso: curso,
             fecha: _fecha,
             estado: asist,
-            justificada: "----"
+            justificada: just
         };
         await axios.post(url+'save_asistencia', asistData).then(window.history.back());
     }
@@ -64,11 +65,13 @@ const AsistenciaForm = () =>
             break;
             case 1: asist = "Retraso";
                     estado = 2;
+                    just = "No";
                     document.getElementById("estado").innerHTML = asist;
                     document.getElementById("estado").style.backgroundColor ='#F3B911' ;
             break;
             case 2: asist = "No Presente";
                     estado = 3;
+                    just = "No";
                     document.getElementById("estado").innerHTML = asist;
                     document.getElementById("estado").style.backgroundColor = '#E42525';
             break;

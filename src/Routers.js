@@ -20,6 +20,7 @@ import Asistencias from './components/Asistencias';
 import Menu_Cursos from './components/Menu_Cursos';
 import Cursos_Archivados from './components/Cursos_Archivados';
 import AsistenciaForm from './components/AsistenciaForm';
+import Justificar from './components/Justificar';
 const Router = () => {
     return (
 
@@ -44,6 +45,7 @@ const Router = () => {
                 <Route exact path="/admin_alums" element={<AdminAlumnos />} />
                 <Route exact path="/asistencias" element={<Asistencias/>} />
                 <Route exact path="/asistencias/add" element={<AsistenciaForm/>}/>
+                <Route exact path="/asistencias/justificar" element={<Justificar/>} />
             </Routes>
             <Footer/>
         </BrowserRouter>
