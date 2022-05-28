@@ -111,7 +111,7 @@ const Asistencias = () =>
                                         <th scope="row">{asistencia.fecha}</th>
                                         <td>{curso}</td>
                                         <td>{asistencia.estado}</td>
-                                        <td><button className="btn" onClick={VerJustificante = () =>{ window.open("../../../../TFG_Back_End/justificantes/4oeutsom52.pdf", '_blank').focus();}}>{asistencia.justificada}</button></td>
+                                        <td><a href="http://localhost:3000/TFG_Front_End/public/robots.txt" download="robots.txt">Si</a><button className="btn" onClick={VerJustificante = () =>{ window.open("http://localhost:3000/./assets/ejer_tema3_parte3.pdf", '_blank').focus();}}>{asistencia.justificada}</button></td>
                                         <td>
                                             <button type="button" className="btn-remove" aria-hidden="true" data-bs-toggle="modal" 
                                                     data-bs-target={"#myModal" + i}>
