@@ -23,19 +23,6 @@ const AlumnoForm = () =>
         
     }, [cursos.length]);
 
-    function calculaEdad()
-    {
-        var hoy = new Date();
-        var cumpleanos = new Date(alumData.fecha_nacimiento);
-        var edad = hoy.getFullYear() - cumpleanos.getFullYear();
-        var m = hoy.getMonth() - cumpleanos.getMonth();
-    
-        if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
-            edad--;
-        }
-
-        return edad;
-    }
     const createAlumn = async(event) =>
     {
         event.preventDefault();
@@ -43,9 +30,7 @@ const AlumnoForm = () =>
             nombre: nombre.current.value,
             apellidos: apellidos.current.value,
             fecha_nacimiento: fecha_nacimiento.current.value,
-            edad: calculaEdad(),
-            cursos: _asignaturas,
-            activo: true
+            cursos: _asignaturas
         };
         console.log(alumData);
         axios.post(url+"save_alumno", alumData).then((res) =>

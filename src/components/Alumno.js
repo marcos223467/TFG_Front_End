@@ -22,7 +22,6 @@ const Alumno = ({id,alumnoData, actualizar}) =>
                 getAsistencia(res.data.asistencia);
                 if(asistencia.length > 0)
                 {
-                    console.log(asistencia[0]);
                     var asist = asistencia[0].estado;
                     switch(asist)
                     {
@@ -130,8 +129,6 @@ const Alumno = ({id,alumnoData, actualizar}) =>
         controlAsistencia();
         actualizar(true);
     }
-    
-    var fecha = new Date(alumnoData.fecha_nacimiento);
 
     function VerAsistencia(event)
     {
@@ -142,18 +139,13 @@ const Alumno = ({id,alumnoData, actualizar}) =>
 
     return(
         <div className="container">
-            <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+            <div className="row row-cols-1 row-cols-md-1 row-cols-lg-1">
                 <div className="card" id="alumno">
                     <div className="card-body">
                         <div className="row">
                             <h3 className="card-title">{alumnoData.apellidos} {alumnoData.nombre}</h3>
                         </div>
-                        <div className="row">
-                            <p id="txt" className="card-text">Edad: {alumnoData.edad}</p>
-                        </div>
-                        <div className="row">
-                            <p id = "txt" className="card-text">Fecha de nacimiento: {fecha.getDate() + "-" + (fecha.getMonth() + 1) + "-" + fecha.getFullYear()}</p>
-                        </div>
+                        <br/>
                     </div>
                     <div className="row">
                         <div className="container-fluid" id="container-alumno">

@@ -26,6 +26,18 @@ const Cursos_Archivados = () =>
         event.preventDefault();
         window.history.back();
     }
+
+    function Esta(curso)
+    {
+        var esta = false;
+        for(var i = 0; i < us.cursos.length; i++)
+        {
+            if(curso.nombre === us.cursos[i])
+                esta = true;
+        }
+        
+        return esta;
+    }
     if(us.tipo === "admin")
     {
         return(
@@ -67,12 +79,15 @@ const Cursos_Archivados = () =>
                         { cursos.map((curso,i) =>{
                             if(curso.archivado)
                             {
-                                return(
-                                    <div className="col" key={i}>
-                                        <Curso id={i}
-                                            cursoData={curso}/>
-                                    </div>
-                                );
+                                if(Esta(curso))
+                                {
+                                    return(
+                                        <div className="col" key={i}>
+                                            <Curso id={i}
+                                                cursoData={curso}/>
+                                        </div>
+                                    );
+                                }
                             }
                         })}
                     </div>

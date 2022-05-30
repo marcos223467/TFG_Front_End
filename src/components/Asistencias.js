@@ -73,7 +73,7 @@ const Asistencias = () =>
                                         <th scope="row">{asistencia.fecha}</th>
                                         <td>{curso}</td>
                                         <td>{asistencia.estado}</td>
-                                        <td><a href={"/asistencias/justificar?id=" + asistencia._id}>{asistencia.justificada}</a></td>
+                                        <td><a href={"/asistencias/justificar?id=" + asistencia._id}>{asistencia.justificada} <i className="fa-solid fa-upload"></i></a></td>
                                         <td>
                                             <button type="button" className="btn-remove" aria-hidden="true" data-bs-toggle="modal" 
                                                     data-bs-target={"#myModal" + i}>
@@ -111,7 +111,7 @@ const Asistencias = () =>
                                         <th scope="row">{asistencia.fecha}</th>
                                         <td>{curso}</td>
                                         <td>{asistencia.estado}</td>
-                                        <td><a href="http://localhost:3000/TFG_Front_End/public/robots.txt" download="robots.txt">Si</a><button className="btn" onClick={VerJustificante = () =>{ window.open("http://localhost:3000/./assets/ejer_tema3_parte3.pdf", '_blank').focus();}}>{asistencia.justificada}</button></td>
+                                        <td><a href="http://localhost:3000/TFG_Front_End/public/robots.txt" download="robots.txt">Si <i className="fa-solid fa-download"></i></a></td>
                                         <td>
                                             <button type="button" className="btn-remove" aria-hidden="true" data-bs-toggle="modal" 
                                                     data-bs-target={"#myModal" + i}>

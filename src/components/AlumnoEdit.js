@@ -18,7 +18,6 @@ const AlumnoEdit = () =>
     const fecha_nacimiento = React.createRef();
     const curso = React.createRef();
 
-    var _edad;
 
     useEffect(() =>{
         const urlParams = window.location.search;
@@ -74,19 +73,6 @@ const AlumnoEdit = () =>
         })
     },[id, alumno.length,cursos.length,_asignaturas.length]);
 
-    function calculaEdad()
-    {
-        var hoy = new Date();
-        var cumpleanos = new Date(alumno[0].fecha_nacimiento);
-        var edad = hoy.getFullYear() - cumpleanos.getFullYear();
-        var m = hoy.getMonth() - cumpleanos.getMonth();
-    
-        if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
-            edad--;
-        }
-        _edad = edad;
-    }
-
     const editAlumn = (event) =>
     {
         event.preventDefault();
@@ -96,9 +82,7 @@ const AlumnoEdit = () =>
             nombre: document.getElementById("nombre").value,
             apellidos: document.getElementById("apellidos").value,
             fecha_nacimiento: document.getElementById("fecha").value,
-            edad: _edad,
-            cursos: _asignaturas,
-            activo: true
+            cursos: _asignaturas
         }
         console.log(alumData);
         axios.put(url+"alumno/" + id, alumData).then((error) =>
@@ -218,7 +202,7 @@ const AlumnoEdit = () =>
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Fecha de nacimiento</label>
-                        <input type="date" id="fecha" className="form-control input-form" onChange={calculaEdad}/>
+                        <input type="date" id="fecha" className="form-control input-form"/>
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Asignaturas</label>

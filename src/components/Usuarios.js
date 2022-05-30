@@ -6,7 +6,7 @@ const Usuarios = () =>
 {
     const url = Global.url;
     const [usuarios, getUsers] = useState([]);
-    
+    let cursos = "";
     useEffect(() =>{
         axios.get(url+"/users").then(res =>{
             getUsers(res.data.users);
@@ -17,6 +17,14 @@ const Usuarios = () =>
     //Declaro la función para poder llamarla en el onClick, si llamo directamente elimina todos los usuarios de la base de datos
     function Eliminar(){}
 
+    function Cursos(curs)
+    {
+        cursos = "";
+        for(let i = 0; i < curs.length; i++)
+        {
+            cursos += curs[i] + "  ";
+        }
+    }
     function Filtrar()
     {
         var busqueda = document.getElementById('buscar');
@@ -59,6 +67,7 @@ const Usuarios = () =>
                             <th scope="col">Apellidos</th>
                             <th scope="col">Email</th>
                             <th scope="col">Tipo</th>
+                            <th scope="col">Asignatura</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -66,6 +75,7 @@ const Usuarios = () =>
                         {
                             usuarios.map((usuario,i) =>
                             {
+                                Cursos(usuario.cursos);
                                 return(
                                     <tr key={i}>
                                         <th scope="row">{i + 1}</th>
@@ -73,13 +83,14 @@ const Usuarios = () =>
                                         <td>{usuario.apellidos}</td>
                                         <td>{usuario.email}</td>
                                         <td>{usuario.tipo}</td>
+                                        <td>{cursos}</td>
                                         <td>
                                             <a href={'/editar_usuario?id=' + usuario._id}>
-                                                <i id="adm-i" class="fa-solid fa-pen-to-square"></i>
+                                                <i id="adm-i" className="fa-solid fa-pen-to-square"></i>
                                             </a>
                                             <button type="button" className="btn-remove" aria-hidden="true" data-bs-toggle="modal" 
                                                     data-bs-target={"#myModal" + i}>
-                                                <i id="adm-i" class="fa-solid fa-trash-can"></i>
+                                                <i id="adm-i" className="fa-solid fa-trash-can"></i>
                                             </button>
 
                                             <div className="modal fade" id={"myModal" + i} tabIndex="-1" role="dialog">

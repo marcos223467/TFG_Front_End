@@ -43,72 +43,37 @@ const Alumnos = ({actualizar}) =>
         event.preventDefault();
         window.history.back();
     }
-    if(us.tipo === "admin")
-    {
-        return(
-            <div className="bd-example">
-                <a href="#" onClick={Volver}className="back">
-                    <i className="fa-solid fa-arrow-left-long"></i>
-                    <p>Volver</p>
-                </a>
-                <div>
-                    <h1>{curso}</h1>
-                </div>
-                <div className="container">
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-                        { alumnos.map((alumno,i) =>{
-                            return(
-                                <div className="col" key={i}>
-                                    <Alumno id={i}
-                                        alumnoData={alumno}
-                                        actualizar={actualizar}/>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
-                <div id="exportar">
-                    <CSVLink data={asistencias} filename={'Listado de asistencia ' + curso}>
-                        <button type="button" className="btn btn-dark">Exportar Asistencia</button>
-                    </CSVLink>
-                    
+    
+    return(
+        <div className="bd-example">
+            <a href="#" onClick={Volver}className="back">
+                <i className="fa-solid fa-arrow-left-long"></i>
+                <p>Volver</p>
+            </a>
+            <div>
+                <h1>{curso}</h1>
+            </div>
+            <div className="container">
+                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+                    { alumnos.map((alumno,i) =>{
+                        return(
+                            <div className="col" key={i}>
+                                <Alumno id={i}
+                                    alumnoData={alumno}
+                                    actualizar={actualizar}/>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
-        )
-    }
-    else if(us.tipo === "profesor")
-    {
-        return(
-            <div className="bd-example">
-                <a href="#" onClick={Volver}className="back">
-                    <i className="fa-solid fa-arrow-left-long"></i>
-                    <p>Volver</p>
-                </a>
-                <div>
-                    <h1>{curso}</h1>
-                </div>
-                <div className="container">
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-                        { alumnos.map((alumno,i) =>{
-                            return(
-                                <div className="col" key={i}>
-                                    <Alumno id={i}
-                                        alumnoData={alumno}
-                                        actualizar={actualizar}/>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
-                <div id="exportar">
-                    <CSVLink data={asistencias} filename={'Listado de asistencia ' + curso}>
-                        <button type="button" className="btn btn-dark">Exportar Asistencia</button>
-                    </CSVLink>
-                    
-                </div>
+            <div id="exportar">
+                <CSVLink data={asistencias} filename={'Listado de asistencia ' + curso}>
+                    <button type="button" className="btn btn-dark">Exportar Asistencia</button>
+                </CSVLink>
+                
             </div>
-        )
-    }
+        </div>
+    )
 
 }
 
