@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import Global from '../Global';
 import axios from "axios";
+import file_downloader from "js-file-download";
 import '../assets/css/usuarios.css';
 
 const Asistencias = () =>
@@ -41,7 +42,7 @@ const Asistencias = () =>
     }
 
     function Eliminar(){}
-    function VerJustificante(){}
+    function Descargar(){}
 
     return(
         <div className="bd-example mb-3">
@@ -111,7 +112,21 @@ const Asistencias = () =>
                                         <th scope="row">{asistencia.fecha}</th>
                                         <td>{curso}</td>
                                         <td>{asistencia.estado}</td>
-                                        <td><a href="tks83d0v1a.pdf" download>Si <i className="fa-solid fa-download"></i></a></td>
+                                        <td>
+                                            <a id={"descargar"+i} href="" onClick={Descargar = (event) =>
+                                            {
+                                                event.preventDefault();
+                                                axios({
+                                                    url:"http://localhost:3900/justificantes/pkrmxgk4ty.png",
+                                                    method:"GET",
+                                                    responseType:"blob"
+                                                }).then((res) => {
+                                                    file_downloader(res.data, "archivo.png");
+                                                });
+                                            }}>
+                                                Si <i className="fa-solid fa-download"></i>
+                                            </a>
+                                        </td>
                                         <td>
                                             <button type="button" className="btn-remove" aria-hidden="true" data-bs-toggle="modal" 
                                                     data-bs-target={"#myModal" + i}>

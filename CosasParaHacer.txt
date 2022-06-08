@@ -1,11 +1,8 @@
-Hacer que puedas ver los justificantes
+Hay que cambiar el modelo de las asistencias para que tengan el nombre del justificante y se puedan descargar
+Hacerlo todo responsive
 
 
 
 
 
 PREGUNTAS:
-¿Lo subo a un servidor?
-¿En la defensa tendré que hacer una demostración en tiempo real de la aplicación?
-¿Que información pongo de los alumnos?
-¿Hago distincion entre profesores?
