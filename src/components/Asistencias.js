@@ -121,7 +121,7 @@ const Asistencias = () =>
                                                     method:"GET",
                                                     responseType:"blob"
                                                 }).then((res) => {
-                                                    file_downloader(res.data, asistencia.justificacion);
+                                                    file_downloader(res.data, "justificante_"+nombre_alumno+"_"+asistencia.fecha + "." + asistencia.justificacion.split('.').pop());
                                                 });
                                             }}>
                                                 Si <i className="fa-solid fa-download"></i>
