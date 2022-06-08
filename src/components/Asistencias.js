@@ -121,7 +121,7 @@ const Asistencias = () =>
                                                     method:"GET",
                                                     responseType:"blob"
                                                 }).then((res) => {
-                                                    file_downloader(res.data, "archivo.png");
+                                                    file_downloader(res.data, asistencia.justificacion);
                                                 });
                                             }}>
                                                 Si <i className="fa-solid fa-download"></i>

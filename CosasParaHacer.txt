@@ -1,4 +1,4 @@
-Hay que cambiar el modelo de las asistencias para que tengan el nombre del justificante y se puedan descargar
+Arreglar la vista y problemas con bootstrap
 Hacerlo todo responsive
 
 
