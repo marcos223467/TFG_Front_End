@@ -43,7 +43,8 @@ const AsistenciaForm = () =>
             nombre_curso: curso,
             fecha: _fecha,
             estado: asist,
-            justificada: just
+            justificada: just,
+            justificacion: ""
         };
         await axios.post(url+'save_asistencia', asistData).then(window.history.back());
     }

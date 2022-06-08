@@ -63,7 +63,8 @@ const Justificar = () =>
                 nombre_curso : asistencia[0].nombre_curso,
                 fecha : asistencia[0].fecha,
                 estado: asistencia[0].estado,
-                justificada: "Si"
+                justificada: "Si",
+                justificacion: filename
             }
             console.log(asistData);
 

@@ -85,7 +85,8 @@ const Alumno = ({id,alumnoData, actualizar}) =>
             nombre_curso : curso,
             fecha : _fecha,
             estado: asist,
-            justificada: just
+            justificada: just,
+            justificacion: ""
         }
 
         if(asistencia.length === 0)

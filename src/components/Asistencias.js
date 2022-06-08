@@ -113,11 +113,11 @@ const Asistencias = () =>
                                         <td>{curso}</td>
                                         <td>{asistencia.estado}</td>
                                         <td>
-                                            <a id={"descargar"+i} href="" onClick={Descargar = (event) =>
+                                            <a href="" onClick={Descargar = (event) =>
                                             {
                                                 event.preventDefault();
                                                 axios({
-                                                    url:"http://localhost:3900/justificantes/pkrmxgk4ty.png",
+                                                    url:"http://localhost:3900/justificantes/"+asistencia.justificacion,
                                                     method:"GET",
                                                     responseType:"blob"
                                                 }).then((res) => {
