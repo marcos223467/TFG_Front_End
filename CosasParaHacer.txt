@@ -1,4 +1,3 @@
-Arreglar la vista y problemas con bootstrap
 Hacerlo todo responsive
 
 

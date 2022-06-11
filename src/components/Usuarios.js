@@ -19,11 +19,19 @@ const Usuarios = () =>
 
     function Cursos(curs)
     {
-        cursos = "";
-        for(let i = 0; i < curs.length; i++)
+        if(curs != undefined)
         {
-            cursos += curs[i] + "  ";
+            cursos = "";
+            for(let i = 0; i < curs.length; i++)
+            {
+                cursos += curs[i] + "  ";
+            }
         }
+        else
+        {
+            cursos = "";
+        }
+        
     }
     function Filtrar()
     {
