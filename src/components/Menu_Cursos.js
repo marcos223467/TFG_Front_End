@@ -28,7 +28,7 @@ const Menu_Cursos = () =>
                     <div className="card-adm">
                         <div className="card-body">
                             <i id="i" className="fa-solid fa-book"></i>
-                            <h2 className="card-title">Cursos Activos</h2>
+                            <h2 className="card-title">Asignaturas Activas</h2>
                         </div>
                     </div>
                     </button>
@@ -38,7 +38,7 @@ const Menu_Cursos = () =>
                         <div className="card-adm">
                             <div className="card-body">
                                 <i id="i" className="fa-solid fa-bookmark"></i>
-                                <h2 className="card-title">Cursos Archivados</h2>
+                                <h2 className="card-title">Asignaturas Archivadas</h2>
                             </div>
                         </div>
                     </button>

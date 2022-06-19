@@ -46,7 +46,7 @@ const Cursos = () =>
                     <div className="card" id="add">
                         <div className="card-body">
                             <i id="add-i" className="fa-solid fa-plus"></i>
-                            <h5 className="card-title">Añadir curso</h5>
+                            <h5 className="card-title">Añadir asignatura</h5>
                         </div>
                     </div>
                 </button>
