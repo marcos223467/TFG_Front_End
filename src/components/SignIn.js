@@ -56,8 +56,6 @@ const SignIn = () =>{
     }
 
     return(
-            
-
         <div className="card col-md-4 mx-auto" id="card-form">
             <div className="card-header" id="card-header-form">
                 <img className="mb-1 logo" id="logoSignIn" src={logo} alt="" width="100"/>

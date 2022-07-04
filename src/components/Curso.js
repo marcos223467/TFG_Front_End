@@ -73,7 +73,7 @@ const Curso = ({id, cursoData}) =>
                                 <div className="card-body">
                                     <div className="col"><h3 className="card-title">{cursoData.nombre}</h3></div>
                                     <div className="col"><p id="txt" className="card-text">Año: {cursoData.anyo}</p></div>
-                                    <div className="col"><p id="txt" className="card-text">Lugar: {cursoData.carrera}</p></div>
+                                    <div className="col"><p id="txt" className="card-text">Grado: {cursoData.carrera}</p></div>
                                     <div className="col"><p id="txt" className="card-text">Entidad: {cursoData.entidad}</p></div>
                                     <div className="col"><p id="txt" className="card-text">Inicio: {fecha_ini.getDate() + "-" + fecha_ini.getMonth() + "-" + fecha_ini.getFullYear()}</p></div>
                                     <div className="col"><p id="txt" className="card-text">Fin: {fecha_fin.getDate() + "-" + fecha_fin.getMonth() + "-" + fecha_fin.getFullYear()}</p></div>
@@ -109,7 +109,7 @@ const Curso = ({id, cursoData}) =>
                                 <h4 id="titulo" className="modal-title">Eliminar curso</h4>
                             </div>
                             <div className="modal-body">
-                                <p>¿Estás seguro de querer eliminar este curso?</p>
+                                <p>¿Estás seguro de querer eliminar esta asignatura?</p>
                             </div>
                             <div className="modal-footer">
                                 <button id="eliminar" type="button" className="btn btn-default" 
@@ -129,7 +129,7 @@ const Curso = ({id, cursoData}) =>
                                 <h4 id="titulo" className="modal-title">Archivar curso</h4>
                             </div>
                             <div className="modal-body">
-                                <p>¿Estás seguro de querer archivar este curso?</p>
+                                <p>¿Estás seguro de querer archivar esta asignatura?</p>
                             </div>
                             <div className="modal-footer">
                                 <button id="eliminar" type="button" className="btn btn-default" 
@@ -153,7 +153,7 @@ const Curso = ({id, cursoData}) =>
                             <div className="card-body">
                             <div className="col"><h3 className="card-title">{cursoData.nombre}</h3></div>
                                     <div className="col"><p id="txt" className="card-text">Año: {cursoData.anyo}</p></div>
-                                    <div className="col"><p id="txt" className="card-text">Lugar: {cursoData.carrera}</p></div>
+                                    <div className="col"><p id="txt" className="card-text">Grado: {cursoData.carrera}</p></div>
                                     <div className="col"><p id="txt" className="card-text">Entidad: {cursoData.entidad}</p></div>
                                     <div className="col"><p id="txt" className="card-text">Inicio: {fecha_ini.getDate() + "-" + fecha_ini.getMonth() + "-" + fecha_ini.getFullYear()}</p></div>
                                     <div className="col"><p id="txt" className="card-text">Fin: {fecha_fin.getDate() + "-" + fecha_fin.getMonth() + "-" + fecha_fin.getFullYear()}</p></div>
